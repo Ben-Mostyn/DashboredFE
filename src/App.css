@@ -1,38 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.full {
+  height: 100%;
+  width: 100%;
+}
+
 .App {
-  text-align: center;
+  margin-left: 25%;
+  /* border: 3px red solid; */
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav {
+  /* border:2px green solid; */
+  width: 50%;
+  height: 15%;
+  /* background-color: blue; */
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: row;
+  margin-left: 25%;
+  position: sticky;
+  top: 0;
+  position: -webkit-sticky;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav ul {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+.nav ul li {
+  text-decoration: none;
+  list-style-type: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#logo {
+  height: 100px;
+  width: 150px;
+  /* margin-right: 420px; */
+}
+.icons {
+  display: flex;
+  /* border: 2px solid yellow; */
+  margin-left: auto;
+  width: 30%;
+  height: 50%;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.icons1:hover {
+  color: blue;
+}
+
+.storydiv {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-left: 25%;
+  /* border: 3px pink solid; */
+  margin-bottom: 40px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+.Story {
+  display: flex;
+
+  /* border: 3px red solid; */
+  width: 100%;
+  justify-content: space-around;
+}
+
+.Story img {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profileImg {
+  border-radius: 50%;
+}
+
+.profileUser {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.profileUser h4 {
+  margin-left: 10px;
+}
+
+.tile {
+  margin-bottom: 50px;
+}
+
+#nameptag {
+  font-size: small;
+}
+
+.profile-btn {
+  border: none;
+  font-size: 20px;
+  background-color: white;
+}
+.profile-btn:hover {
+  color: blue;
+}
+
+.modal {
+  position: absolute;
+  right: 450px;
+  top: 70px;
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 350px;
+  height: 500px;
+  background-color: rgba(176, 176, 176, 0.678);
+  border-radius: 8px;
+  z-index: 100;
+  border: grey solid 1px;
 }
 
-.App-link {
-  color: #61dafb;
+.close-btn {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.991);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mainContent {
+  z-index: 1;
+}
+
+.inputs {
+  margin: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+button {
+  margin: 20px;
 }
