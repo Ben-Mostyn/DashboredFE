@@ -6,7 +6,7 @@ import { tokenCheck } from "./utils";
 
 const App = () => {
   const [user, setUser] = useState();
-  const [show, setShow] = useState(false);
+ 
 
   useEffect(() => {
     if (localStorage.key("myToken")) {
@@ -16,19 +16,14 @@ const App = () => {
 
   return (
     <div className="full">
-      <nav classname="nav">
-        <Navbar setShow={setShow} />
-      </nav>
-
+    
+       
       <UsernameForm
         setUser={setUser}
         user={user}
-        onClose={() => setShow(false)}
-        show={show}
-      />
-      <div className="mainContent">
-        <div className="App"></div>
-      </div>
+        />
+        
+  
     </div>
   );
 };
