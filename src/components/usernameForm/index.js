@@ -9,9 +9,7 @@ export const UsernameForm = (props) => {
   const [logBool, setLogBool] = useState(false);
   const [btn, setBtn] = useState("Login");
 
-  if (!props.show) {
-    return null;
-  }
+ 
   const btnContent = (e) => {
     if (!logBool) {
       setBtn("Sign Up");
@@ -31,6 +29,7 @@ export const UsernameForm = (props) => {
     }
   };
   return (
+    //Modal
     <div className="modal">
       {props.user && <h1>{props.user}</h1>}
       <button onClick={(e) => btnContent()}>{btn} </button>
@@ -55,9 +54,7 @@ export const UsernameForm = (props) => {
         />
         <button type="submit">Submit</button>
       </form>
-      <button className="close-btn" onClick={props.onClose}>
-        <AiOutlineCloseCircle />
-      </button>
+      
     </div>
   );
 };
