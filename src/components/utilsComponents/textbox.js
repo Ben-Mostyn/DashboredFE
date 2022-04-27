@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
+import { styles } from "../utilsComponents/imageuploader.css";
 
 function Textbox() {
   const [showBtn, setShowBtn] = useState(false);
   const [textArea, setTextArea] = useState([]);
-  const [activeDrags, setActiveDrags] = useState(0);
-  const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
+  // const [activeDrags, setActiveDrags] = useState({ zIndex: 10 });
+  // const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
   const [workXPs, setWorkXPs] = useState(0);
   const [textInput, setTextInput] = useState();
+  const [zIndex, setZIndex] = useState(1);
 
   // const onStart = () => {
-  //   this.setActiveDrags({ activeDrags: ++this.activeDrags });
+  //   this.setActiveDrags({ activeDrags: ++activeDrags });
   // };
 
   // const onStop = () => {
@@ -38,18 +40,21 @@ function Textbox() {
 
   return (
     <div>
-      <button style={{ zIndex: 1 }} onClick={createText}>
-        Text
-      </button>
+      <button onClick={createText}>Text</button>
 
       {showBtn ? (
         <div>
           {textArea.map((workXP, i) => {
             return (
-              <Draggable style={{ zIndex: 5 }}>
-                <div>
+              <Draggable>
+                <div
+                  onClick={() => {
+                    setZIndex(10);
+                  }}
+                >
                   <button onClick={removeHandler}>x</button>
                   <textarea
+                    style={[styles.zIndex, { zIndex: zIndex }]}
                     className="draggable"
                     key={i}
                     placeholder="Enter here"

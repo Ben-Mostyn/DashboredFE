@@ -1,0 +1,20 @@
+.dropzone {
+  border: black dashed 2px;
+  height: 8rem;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.active {
+  border: solid red 2px;
+}
+
+.zIndex {
+  z-index: 999;
+}
