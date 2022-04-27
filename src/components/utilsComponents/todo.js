@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
+import Draggable from "react-draggable";
 
 const ToDoTemplate = () => {  //two features
     const [currentTodo, setCurrentTodo] = useState('');  //the one you are typing
     const [todos, setTodos] = useState([   //the ones you have already written
     {
-        todo: 'Make bed',
+        todo: 'Add new todo',
         isCompleted: true
-    },
-    {
-        todo: 'feed cats',
-        isCompleted: false
     }
 ]);
     const createNewTodo = (currentTodo) => {
@@ -30,7 +27,7 @@ const ToDoTemplate = () => {  //two features
         setTodos(todosArray);
       }
     return(
-        <div>
+        <Draggable><div>
             <h1>ToDo List!</h1>
             <input
             className = "todo-input"
@@ -57,7 +54,7 @@ const ToDoTemplate = () => {  //two features
         </div>
       ))}
       {todos.length > 0 && `${todos.length} items`}
-    </div>
+    </div></Draggable>
   );
 }
 
