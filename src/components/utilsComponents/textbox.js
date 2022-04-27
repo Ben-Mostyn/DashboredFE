@@ -21,11 +21,19 @@ function Textbox() {
 
   //   function on this button create a textbox and push into textarea array
 
+  //!   creates textbox onclick
   const createText = () => {
     setShowBtn(true);
     setWorkXPs(workXPs + 1);
     setTextArea([...textArea, textInput]);
     setTextInput();
+  };
+
+  //   !deletes targeted textbox
+  const removeHandler = (index, i) => {
+    let storedArr = [...textArea];
+    storedArr.splice(index, 1);
+    setTextArea(storedArr);
   };
 
   return (
@@ -38,36 +46,26 @@ function Textbox() {
         <div>
           {textArea.map((workXP, i) => {
             return (
-              <Draggable>
-                <textarea
-                  className="draggable"
-                  key={i}
-                  placeholder="Enter here"
-                  onChange={(e) => {
-                    setTextInput(e.target.value);
-                  }}
-                />
+              <Draggable style={{ zIndex: 5 }}>
+                <div>
+                  <button onClick={removeHandler}>x</button>
+                  <textarea
+                    className="draggable"
+                    key={i}
+                    placeholder="Enter here"
+                    onChange={(e) => {
+                      setTextInput(e.target.value);
+                    }}
+                  />
+                </div>
               </Draggable>
             );
+            // <button onClick={() => setShowBtn(false)}>Delete</button>;
           })}
         </div>
       ) : null}
-
-      <button onClick={() => setShowBtn(false)}>Delete</button>
     </div>
   );
 }
 
 export default Textbox;
-
-/* <Draggable>
-             <div>
-              <textarea
-                style={{ zIndex: 1 }}
-                placeholder="enter text here"
-                id="textbox"
-                cols="30"
-                rows="10"
-              ></textarea>
-            </div>
-          </Draggable> */
