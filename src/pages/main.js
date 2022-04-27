@@ -3,8 +3,9 @@ import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
+import ImageUpload from "../components/utilsComponents/image_upload";
 
-const John = () => {
+const ScrapBook = () => {
   const [toDo, setToDo] = useState(false);
   return (
     <div className="playArea">
@@ -12,8 +13,9 @@ const John = () => {
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
+      <ImageUpload />
     </div>
   );
 };
 
-export default John;
+export default ScrapBook;
