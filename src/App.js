@@ -3,10 +3,12 @@ import "./App.css";
 import { UsernameForm } from "./components/usernameForm";
 import Navbar from "./components/Navbar";
 import { tokenCheck } from "./utils";
+import ToDoTemplate from "./components/ToDo/ToDo";
+
 
 const App = () => {
   const [user, setUser] = useState();
- 
+  const [toDo, setToDo] = useState(false);
 
   useEffect(() => {
     if (localStorage.key("myToken")) {
@@ -22,8 +24,10 @@ const App = () => {
         setUser={setUser}
         user={user}
         />
-        
-  
+      
+      {toDo && <ToDoTemplate/>}
+      <button onClick = {()=>setToDo(!toDo)}> ToDo </button>
+      
     </div>
   );
 };
