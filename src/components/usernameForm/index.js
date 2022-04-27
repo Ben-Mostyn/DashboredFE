@@ -2,12 +2,17 @@ import { useState } from "react";
 import { addUser, login } from "../../utils";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
+
+
+
+
 export const UsernameForm = (props) => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [logBool, setLogBool] = useState(false);
   const [btn, setBtn] = useState("Login");
+
 
  
   const btnContent = (e) => {
@@ -28,9 +33,25 @@ export const UsernameForm = (props) => {
       login(username, password, props.setUser);
     }
   };
+
+ 
   return (
     //Modal
+   
+     
+   
     <div className="modal">
+    
+         <div className="front-cover">
+        <div className="first-half"></div>
+        <div className="second-half"></div>  
+       
+      </div>
+      <div className="middleleft"></div>
+      <div className="middleright"></div>
+      
+      <div className="back-cover">
+    
       {props.user && <h1>{props.user}</h1>}
       <button onClick={(e) => btnContent()}>{btn} </button>
       <form onSubmit={submitHandler} className="form">
@@ -54,7 +75,11 @@ export const UsernameForm = (props) => {
         />
         <button type="submit">Submit</button>
       </form>
-      
+      </div>
+     
     </div>
+    
+   
   );
 };
+
