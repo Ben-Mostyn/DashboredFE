@@ -6,6 +6,8 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 
 
+
+
 export const UsernameForm = (props) => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
@@ -25,13 +27,15 @@ export const UsernameForm = (props) => {
     }
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     if (!logBool) {
       addUser(username, email, password, props.setUser);
-    } else {
+    } else  {
       login(username, password, props.setUser);
     }
+    
+
   };
 
  
@@ -52,14 +56,21 @@ export const UsernameForm = (props) => {
       
       <div className="back-cover">
     
-      {props.user && <h1>{props.user}</h1>}
-      <button onClick={(e) => btnContent()}>{btn} </button>
+      
+    
       <form onSubmit={submitHandler} className="form">
+      {props.user && <h1>{props.user}</h1>}
+      <div className="Avatar">
+       
+      </div>
+      <button onClick={(e) => btnContent()}>{btn} </button>
         <input
+        id="Username"
           className="inputs"
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Username"
         />
+        
         {!logBool && (
           <input
             className="inputs"

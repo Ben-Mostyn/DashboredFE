@@ -1,7 +1,11 @@
 
-   
+  @import url('https://fonts.googleapis.com/css2?family=Convergence&display=swap');;
 * {
     box-sizing: border-box;
+    font-family: 'Convergence', sans-serif;
+    font-size: 10px;
+    /* background-image: url(/src/imgs/hip-square.webp); */
+
   }
   
   body {
@@ -11,6 +15,21 @@
     align-items: center;
     min-height: 100vh;
     perspective: 1000px;
+    background-image: url(/src/imgs/hip-square.webp);
+    background-size: 60rem;
+    background-repeat: repeat 0 0;
+    animation: infiniteMove linear  infinite 3000ms;
+
+  }
+
+  @keyframes infiniteMove {
+    0%{
+      background-position: 50rem 50rem;
+    }
+    100%{
+      background-position: 60rem 60rem;
+    }
+    
   }
 
   .modal {
@@ -50,18 +69,18 @@
   .first-half,
   .second-half {
     position: absolute;
-    width: 50%;
+    width: 100%;
     height: 100%; 
-    background-image: url("/src/imgs/front-cover-half-1.jpg");
+    background-image: url("/src/imgs/front-cover.jpg");
    
     background-size: 100% 100%;
     z-index: 1;
   }
   
-  .second-half {
-    left: 50%;
-    background-image: url("/src/imgs/front-cover-half-2.jpg");
-  }
+  /*.second-half {
+    /* left: 50%; */
+    /* background-image: url("/src/imgs/front-cover-half-2.jpg"); */
+  /*}*/
   
   .middleleft,
   .middleright
@@ -69,7 +88,7 @@
   
     content: "";
     position: absolute;
-    background-image: url("/src/imgs/middle-cover.jpeg");
+    background-image: url("/src/imgs/middle-cover.jpg");
     width: 65px;
     height: 100%;
     background-size: 100% 100%;
@@ -89,10 +108,13 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("/src/imgs/back-cover.jpeg");
+    background-image: url("/src/imgs/back-cover.jpg");
     background-size: 100% 100%;
     transform: rotateY(180deg) translateZ(65px);
     z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    
   }
   
@@ -105,35 +127,74 @@ border: 10px red solid;
 
 
   } 
+
+
   
    .inputs {
     margin: 20px;
-    background: rgba( 255, 255, 255, 0.2 );
+   background: none;
+    border: solid rgb(250, 249, 248) 2px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    font-family: 'Convergence'
+  } 
+
+  .inputs:focus{
+    outline: none;
+  }
+
+  /* .inputs:focus ~ .Usernamelabel
+  {
+    bottom: 152px;
+    transition:  200ms ease-in-out;
+    font-size: 8px;
+  } */
+
+  
+
+
+
+
+ 
+  .Avatar{
+    z-index: 100; 
+  border: 1px rgb(255, 255, 255) solid;
+  height: 100px;
+  width: 100px;
+ margin-top: 5px;
+border-radius: 50%;
+background-image: url(/src/imgs/avatar.png);
+background-size:100% 100%;
+
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 5px );
 -webkit-backdrop-filter: blur( 5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
-  } 
+  }
   
   .form {
-    display: flex;
-    flex-direction: column;
     
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
      z-index: 100; 
     background: rgba( 255, 255, 255, 0.2 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 5px );
 -webkit-backdrop-filter: blur( 5px );
 border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+/* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
   } 
    button {
     margin-top: 20px;
-    background: rgba( 255, 255, 255, 0.2 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 5px );
--webkit-backdrop-filter: blur( 5px );
-border-radius: 10px;
-border: 10px solid rgba( 255, 255, 255, 0.18 );
+    background: none;
+    border: 1px white solid;
+    -webkit-appearance: none;
+    border-radius: 5px;
+   
   } 
+
+  button:focus{
+    outline: none;
+  }
