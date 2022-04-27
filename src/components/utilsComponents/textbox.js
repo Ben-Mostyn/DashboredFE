@@ -54,7 +54,7 @@ function Textbox() {
                 >
                   <button onClick={removeHandler}>x</button>
                   <textarea
-                    style={[styles.zIndex, { zIndex: zIndex }]}
+                    // style={[styles.zIndex, { zIndex: zIndex }]}
                     className="draggable"
                     key={i}
                     placeholder="Enter here"

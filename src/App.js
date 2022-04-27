@@ -31,7 +31,10 @@ const App = () => {
           path="/"
           element={<UsernameForm setUser={setUser} user={user} />}
         />
-        <Route path="/main" element={<ScrapBook />} />
+        <Route
+          path="/main"
+          element={<ScrapBook setUser={setUser} user={user} />}
+        />
       </Routes>
     </Router>
   );
