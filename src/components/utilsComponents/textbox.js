@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
-import { styles } from "../utilsComponents/imageuploader.css";
 
 function Textbox() {
   const [showBtn, setShowBtn] = useState(false);
@@ -43,24 +42,22 @@ function Textbox() {
       <button onClick={createText}>Text</button>
 
       {showBtn ? (
-        <div>
+        <div className="textParent">
           {textArea.map((workXP, i) => {
             return (
-              <Draggable>
-                <div
-                  onClick={() => {
-                    setZIndex(10);
-                  }}
-                >
+              <Draggable handle=".handle">
+                <div>
                   <button onClick={removeHandler}>x</button>
+                  <div className="handle">Drag from here</div>
                   <textarea
-                    // style={[styles.zIndex, { zIndex: zIndex }]}
-                    className="draggable"
+                    className="draggable textbox"
                     key={i}
                     placeholder="Enter here"
                     onChange={(e) => {
                       setTextInput(e.target.value);
                     }}
+                    cols={20}
+                    rows={8}
                   />
                 </div>
               </Draggable>
