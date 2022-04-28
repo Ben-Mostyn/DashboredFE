@@ -3,3 +3,19 @@
   width: 800px;
   border: 2px solid red;
 }
+
+.textParent {
+  border: yellow solid 3px;
+  height: 500px;
+  widows: 500px;
+}
+
+.textbox {
+  border: 2px solid black;
+  font-size: 15px;
+  resize: both;
+}
+
+.draggable1 {
+  border: purple 1px solid;
+}
