@@ -6,14 +6,23 @@ import "./main.css";
 import ImageUpload from "../components/utilsComponents/image_upload";
 import Navbar from "../components/Navbar";
 
-const ScrapBook = () => {
+const ScrapBook = ({ user, setUser }) => {
   const [toDo, setToDo] = useState(false);
+
   return (
 
     <div className= "container">
 <Navbar></Navbar>
     <div className="playArea">
-      <h1>hello</h1>
+      <button
+        onClick={() => {
+          setUser();
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
+      <h1>hello!</h1>
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
