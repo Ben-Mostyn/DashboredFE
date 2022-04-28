@@ -4,11 +4,22 @@ import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
 import Upload from "../components/utilsComponents/image-loader/image_upload";
-const ScrapBook = () => {
+
+const ScrapBook = ({ user, setUser }) => {
+
   const [toDo, setToDo] = useState(false);
+
   return (
     <div className="playArea">
-      <h1>hello</h1>
+      <button
+        onClick={() => {
+          setUser();
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
+      <h1>hello!</h1>
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
