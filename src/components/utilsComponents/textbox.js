@@ -25,7 +25,6 @@ function Textbox() {
   //!   creates textbox onclick
   const createText = () => {
     setShowBtn(true);
-    setWorkXPs(workXPs + 1);
     setTextArea([...textArea, textInput]);
     setTextInput();
   };
