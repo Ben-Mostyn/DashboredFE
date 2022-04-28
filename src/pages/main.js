@@ -3,8 +3,7 @@ import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
-import ImageUpload from "../components/utilsComponents/image_upload";
-
+import Upload from "../components/utilsComponents/image-loader/image_upload";
 const ScrapBook = () => {
   const [toDo, setToDo] = useState(false);
   return (
@@ -13,7 +12,7 @@ const ScrapBook = () => {
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
-      <ImageUpload />
+      <Upload />
     </div>
   );
 };

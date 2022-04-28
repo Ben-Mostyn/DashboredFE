@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
-import { styles } from "../utilsComponents/imageuploader.css";
+// import { styles } from "../utilsComponents/imageuploader.css";
 
 function Textbox() {
   const [showBtn, setShowBtn] = useState(false);
@@ -54,7 +54,7 @@ function Textbox() {
                 >
                   <button onClick={removeHandler}>x</button>
                   <textarea
-                    style={[styles.zIndex, { zIndex: zIndex }]}
+                    // style={[styles.zIndex, { zIndex: zIndex }]}
                     className="draggable"
                     key={i}
                     placeholder="Enter here"
