@@ -3,6 +3,10 @@ import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
+ apiTest
+import MemeGenerator from "../components/utilsComponents/memeApi";
+
+
 import Upload from "../components/utilsComponents/image-loader/image_upload";
 import  NavBar from "../components/Navbar";
 
@@ -11,6 +15,7 @@ import {BiText} from "react-icons/bi"
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
 const ScrapBook = ({ user, setUser }) => {
+dev
 
   const [toDo, setToDo] = useState(false);
 
@@ -37,7 +42,11 @@ const ScrapBook = ({ user, setUser }) => {
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
+ apiTest
+      <MemeGenerator/>
+
       <Upload />
+ dev
     </div>
      </div>
      </div>
