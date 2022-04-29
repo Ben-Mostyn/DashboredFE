@@ -3,6 +3,8 @@ import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
+import MemeGenerator from "../components/utilsComponents/memeApi";
+
 
 const John = () => {
   const [toDo, setToDo] = useState(false);
@@ -12,6 +14,7 @@ const John = () => {
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
+      <MemeGenerator/>
     </div>
   );
 };
