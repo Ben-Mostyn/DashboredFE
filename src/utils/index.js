@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const addUser = async (username, email, password, setUser) => {
   try {
     const res = await fetch(`${process.env.REACT_APP_REST_API}user`, {
