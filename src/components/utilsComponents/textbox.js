@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
-
+import "../utilsComponents/textbox.css";
+import {AiOutlineCloseCircle} from "react-icons/ai"
 function Textbox() {
   const [showBtn, setShowBtn] = useState(false);
   const [textArea, setTextArea] = useState([]);
-  const [activeDrags, setActiveDrags] = useState(0);
-  const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
+  // const [activeDrags, setActiveDrags] = useState({ zIndex: 10 });
+  // const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
   const [workXPs, setWorkXPs] = useState(0);
   const [textInput, setTextInput] = useState();
+  const [zIndex, setZIndex] = useState(1);
 
   // const onStart = () => {
-  //   this.setActiveDrags({ activeDrags: ++this.activeDrags });
+  //   this.setActiveDrags({ activeDrags: ++activeDrags });
   // };
 
   // const onStop = () => {
@@ -24,7 +26,6 @@ function Textbox() {
   //!   creates textbox onclick
   const createText = () => {
     setShowBtn(true);
-    setWorkXPs(workXPs + 1);
     setTextArea([...textArea, textInput]);
     setTextInput();
   };
@@ -36,26 +37,38 @@ function Textbox() {
     setTextArea(storedArr);
   };
 
+//   const tbox = document.getElementById("x")
+// const hover = ()=>{
+//   if(tbox.style.display="none" == "none"){
+//     tbox.style.display="block";}
+//     else{tbox.style.display="none"}
+
+// }
+
   return (
     <div>
-      <button style={{ zIndex: 1 }} onClick={createText}>
-        Text
-      </button>
+      <button onClick={createText}>Text</button>
 
       {showBtn ? (
-        <div>
+        <div className="textParent">
           {textArea.map((workXP, i) => {
             return (
-              <Draggable style={{ zIndex: 5 }}>
+              <Draggable handle=".handle">
                 <div>
-                  <button onClick={removeHandler}>x</button>
+                  <button onClick={removeHandler} id="x"><AiOutlineCloseCircle/></button>
+                  <div className="handle">Drag Me!</div>
                   <textarea
-                    className="draggable"
+                    className="draggable textbox"
+                    id="textbox"
                     key={i}
                     placeholder="Enter here"
                     onChange={(e) => {
                       setTextInput(e.target.value);
                     }}
+                    cols={20}
+                    rows={8}
+
+                  //  onMouseOver={hover}
                   />
                 </div>
               </Draggable>

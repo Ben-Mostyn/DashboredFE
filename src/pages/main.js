@@ -3,20 +3,54 @@ import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
 import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
+ apiTest
 import MemeGenerator from "../components/utilsComponents/memeApi";
 
 
-const John = () => {
+import Upload from "../components/utilsComponents/image-loader/image_upload";
+import  NavBar from "../components/Navbar";
+
+
+import {BiText} from "react-icons/bi"
+import { color } from "@cloudinary/url-gen/qualifiers/background";
+
+const ScrapBook = ({ user, setUser }) => {
+dev
+
   const [toDo, setToDo] = useState(false);
+
+  //Testing
+  const [showBtn, setShowBtn] = useState(false);
+  const [textArea, setTextArea] = useState([]);
+  const [textInput, setTextInput] = useState();
+
   return (
+<div>
+  <div className="main">
+<NavBar setShowBtn={setShowBtn} setTextArea={setTextArea} setTextInput={setTextInput} textInput={textInput} textArea={textArea}/>
     <div className="playArea">
-      <h1>hello</h1>
+      <button
+        onClick={() => {
+          setUser();
+          localStorage.clear();
+        }}
+      >
+       
+        Logout
+      </button>
+      <h1>hello!</h1>
       {toDo && <ToDoTemplate />}
       <button onClick={() => setToDo(!toDo)}> ToDo </button>
       <Textbox />
+ apiTest
       <MemeGenerator/>
+
+      <Upload />
+ dev
     </div>
+     </div>
+     </div>
   );
 };
 
-export default John;
+export default ScrapBook;
