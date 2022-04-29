@@ -14,10 +14,15 @@ const ScrapBook = ({ user, setUser }) => {
 
   const [toDo, setToDo] = useState(false);
 
+  //Testing
+  const [showBtn, setShowBtn] = useState(false);
+  const [textArea, setTextArea] = useState([]);
+  const [textInput, setTextInput] = useState();
+
   return (
 <div>
   <div className="main">
-<NavBar/>
+<NavBar setShowBtn={setShowBtn} setTextArea={setTextArea} setTextInput={setTextInput} textInput={textInput} textArea={textArea}/>
     <div className="playArea">
       <button
         onClick={() => {

@@ -8,7 +8,7 @@
 .main{
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: linear-gradient(-45deg, #e9ad9a, #ecafc6, #b4e1f1, #adf0e0);
 	background-size: 400% 400%;
 	animation: gradient 35s ease infinite;
 	
