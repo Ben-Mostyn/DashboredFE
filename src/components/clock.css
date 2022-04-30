@@ -1,0 +1,30 @@
+.clockkk{
+height: 50px;
+width: 110px;
+font-size: 30px;
+color: rgb(255, 255, 255);
+/* border: 3px red solid; */
+position: absolute;
+top:2px;
+
+}
+
+.box{
+    height: 40px;
+    width: 130px;
+   
+    position: absolute;
+top: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 10px;
+background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 5.5px );
+-webkit-backdrop-filter: blur( 5.5px );
+border-radius: 10px;
+
+
+}
+
