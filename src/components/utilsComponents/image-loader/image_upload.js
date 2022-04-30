@@ -42,6 +42,23 @@ export default function ImageHandle() {
     }
   };
 
+  const updateImage = async (image) => {
+    try {
+      await fetch(`${image}/updateImage`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("myToken")}`, //this maybe different for you?
+        },
+        body: JSON.stringify(image),
+      });
+      console.log(image, "i am updateimage");
+      return image;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="">
       <h1>Cloudinary</h1>
@@ -54,7 +71,7 @@ export default function ImageHandle() {
         style={{ width: 200, height: 200 }}
       />
       <button>
-        <span>Upload Image</span>
+        <span>Upload Image and preview</span>
         <input
           type="file"
           onChange={(event) => {
@@ -62,6 +79,25 @@ export default function ImageHandle() {
           }}
         />
       </button>
+
+      <h1>image url</h1>
+
+      {updateImage ? (
+        <div>
+          {imageUrl.map((imageUrl, index) => {
+            return (
+              <img
+                src={imageUrl}
+                style={{ width: 200, height: 200 }}
+                key={index}
+              />
+            );
+          })}
+        </div>
+      ) : null}
+
+      <span>image url</span>
+      <button onClick={updateImage}>image url</button>
     </div>
   );
 }
