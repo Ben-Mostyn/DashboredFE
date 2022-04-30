@@ -18,20 +18,16 @@ const ScrapBook = ({ user, setUser }) => {
   const [image, setImage] = useState();
 
   //Testing
-  const [showBtn, setShowBtn] = useState(false);
-  const [textArea, setTextArea] = useState([]);
-  const [textInput, setTextInput] = useState();
+  // const [showBtn, setShowBtn] = useState(false);
+  // const [textArea, setTextArea] = useState([]);
+  // const [textInput, setTextInput] = useState();
+  // const [workXPs, setWorkXPs] = useState(0);
+  // const [zIndex, setZIndex] = useState(1);
 
   return (
     <div>
       <div className="main">
-        <NavBar
-          setShowBtn={setShowBtn}
-          setTextArea={setTextArea}
-          setTextInput={setTextInput}
-          textInput={textInput}
-          textArea={textArea}
-        />
+        <NavBar />
         <div className="playArea">
           <button
             onClick={() => {
