@@ -3,6 +3,9 @@
   margin: 0;
 }
 
+.modal1{
+  
+}
 
 
 .main{
@@ -36,7 +39,7 @@
 
 .nav{
 height: 85%;
-width: 10%;
+width: 5%;
 /* border: 2px black solid; */
 position: absolute;
 top:7.5%;
@@ -57,7 +60,7 @@ flex-direction: column;
 }
 
 .half1{
-  height: 200px;
+  height: 400px;
   width: 100%;
   /* border: red solid 2px; */
   display: flex;
@@ -67,6 +70,7 @@ justify-content: center;
 align-items: center;
 position: absolute;
 bottom: 135px;
+object-fit: contain;
 }
 
 .btn1{
@@ -85,6 +89,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   align-items: center;
   font-size: 30px;
   margin: 2px;
+  cursor: pointer;
   
 }
 

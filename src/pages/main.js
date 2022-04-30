@@ -5,6 +5,9 @@ import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
 import Upload from "../components/utilsComponents/image-loader/image_upload";
 import  NavBar from "../components/Navbar";
+import Clock from "../components/clock";
+import Modal from "/Users/dasha/Desktop/dashboardFE/src/components/utilsComponents/modal.js"
+
 
 
 import {BiText} from "react-icons/bi"
@@ -18,12 +21,19 @@ const ScrapBook = ({ user, setUser }) => {
   const [showBtn, setShowBtn] = useState(false);
   const [textArea, setTextArea] = useState([]);
   const [textInput, setTextInput] = useState();
+  // const [modalState, setModalState] = useState(false);
 
+ 
+ 
   return (
 <div>
+
   <div className="main">
-<NavBar setShowBtn={setShowBtn} setTextArea={setTextArea} setTextInput={setTextInput} textInput={textInput} textArea={textArea}/>
+
+<NavBar/>
+
     <div className="playArea">
+   
       <button
         onClick={() => {
           setUser();
@@ -39,6 +49,7 @@ const ScrapBook = ({ user, setUser }) => {
       <Textbox />
       <Upload />
     </div>
+    <Clock/>
      </div>
      </div>
   );
