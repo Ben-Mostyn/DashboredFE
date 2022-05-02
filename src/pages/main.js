@@ -34,6 +34,7 @@ const ScrapBook = ({ user, setUser }) => {
   const [toDo, setToDo] = useState(false);
   const [image, setImage] = useState();
 
+
   //Testing
 
   const [showBtn, setShowBtn] = useState(false);
@@ -105,6 +106,7 @@ const ScrapBook = ({ user, setUser }) => {
     <div className="btn1"> <BiWebcam size={30}/></div>
     <div className="btn1"> <FiPenTool size={30}/> </div>
     <div className="btn1"> <AiOutlineGif size={30}/></div>
+    <div className="btn1"><HiMusicNote size={30}/></div>
     <div className="btn1"><HiMusicNote size={30}/></div>
     
     </div>
