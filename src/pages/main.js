@@ -16,7 +16,7 @@ import Modal from "/Users/dasha/Desktop/dashboardFE/src/components/utilsComponen
 import MemeGenerator from "../components/utilsComponents/memeApi";
 
 import ImageHandle from "../components/utilsComponents/image-loader/image_upload";
-import NavBar from "../components/Navbar";
+// import NavBar from "../components/Navbar";
 
 import { BiText } from "react-icons/bi";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
