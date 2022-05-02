@@ -3,9 +3,7 @@
   margin: 0;
 }
 
-.modal1{
-  
-}
+
 
 
 .main{
@@ -15,7 +13,7 @@
 	background-size: 400% 400%;
 	animation: gradient 35s ease infinite;
 	
-  border: 1px red solid;
+  /* border: 1px red solid; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,23 +196,16 @@ border-radius: 50%;
 }
 
 .playArea {
-  height: 85%;
-  width: 65%;
-  border: 2px solid red;
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid red; */
   position: absolute;
-  left: 20%;
-  background: rgba( 255, 255, 255, 0.75 );
+  /* left: 20%; */
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 5.5px );
   -webkit-backdrop-filter: blur( 5.5px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
-}
-
-.textParent {
-  border: yellow solid 3px;
-  height: 500px;
-  widows: 500px;
 }
 
 .textbox {
@@ -227,4 +218,34 @@ border-radius: 50%;
   border: purple 1px solid;
 }
 
+.nav1{
+  border: red 1px solid;
+  width: 200px;
+  height: 100%;
+}
 
+.mainPlayArea{
+  height: 80%;
+  width: 65%;
+  /* border: 2px solid red; */
+  position: absolute;
+  left: 20%;
+  top:10%;
+  right: 0%;
+  bottom: 0%;
+  background: rgba(255, 255, 255, 0.667);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 5.5px );
+  -webkit-backdrop-filter: blur( 5.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 10px;
+}
+
+.todolist{
+  overflow: auto;
+  position: relative;
+  overflow-y: auto;
+}
