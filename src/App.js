@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import { UsernameForm } from "./components/usernameForm";
-import Navbar from "./components/Navbar";
 import { tokenCheck } from "./utils";
 import "./components/usernameForm/index.css";
 import {
