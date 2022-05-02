@@ -9,7 +9,7 @@ import { DraggableCore } from "react-draggable";
 import Upload from "../components/utilsComponents/image-loader/image_upload";
 // import  NavBar from "../components/Navbar";
 import Clock from "../components/clock";
-import Modal from "/Users/dasha/Desktop/dashboardFE/src/components/utilsComponents/modal.js"
+// import Modal from "src/components/modal.js"
 import { IoPersonCircleOutline } from "react-icons/io5";
 import {BiText} from "react-icons/bi"
 import {BsCalendar2DateFill} from "react-icons/bs"
@@ -18,7 +18,7 @@ import {FiPenTool} from "react-icons/fi"
 import {AiOutlineGif} from "react-icons/ai"
 import {HiMusicNote} from "react-icons/hi"
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import "/Users/dasha/Desktop/dashboardFE/src/components/utilsComponents/textbox.css"
+import "../components/textbox.css";
 
 // import App from "../utils/index";
 
@@ -34,6 +34,7 @@ import { color } from "@cloudinary/url-gen/qualifiers/background";
 const ScrapBook = ({ user, setUser }) => {
   const [toDo, setToDo] = useState(false);
   const [image, setImage] = useState();
+
 
   //Testing
 
@@ -106,6 +107,7 @@ const ScrapBook = ({ user, setUser }) => {
     <div className="btn1"> <BiWebcam size={30}/></div>
     <div className="btn1"> <FiPenTool size={30}/> </div>
     <div className="btn1"> <AiOutlineGif size={30}/></div>
+    <div className="btn1"><HiMusicNote size={30}/></div>
     <div className="btn1"><HiMusicNote size={30}/></div>
     
     </div>
