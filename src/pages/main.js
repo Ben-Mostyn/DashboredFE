@@ -38,6 +38,11 @@ const ScrapBook = ({ user, setUser }) => {
   const [workXPs, setWorkXPs] = useState(0);
   const [zIndex, setZIndex] = useState(1);
 
+  // ! meme state
+  const [meme, setMeme] = useState([""]);
+  const [memeBtn, setMemeBtn] = useState();
+  const [memeArr, setMemeArr] = useState([]);
+
   //!   creates textbox onclick
   const createText = () => {
     setShowBtn(true);
@@ -69,6 +74,30 @@ const ScrapBook = ({ user, setUser }) => {
     setTodos(todosArray);
   };
 
+  // ! meme generator
+
+  const fetchMeme = async () => {
+    const res = await fetch("https://api.imgflip.com/get_memes");
+    const data = await res.json();
+    // console.log(data.data, "i am data");
+    setMeme(data.data.memes);
+    let randomNum = Math.floor(Math.random() * meme.length);
+    setMeme(meme[randomNum].url);
+  };
+
+  // !random meme gen
+  // const randomMeme = () => {
+  //   let randomNum = Math.floor(Math.random() * meme.length);
+  //   setMeme(meme[randomNum].url);
+  // };
+  // console.log(meme);
+
+  // handleClick = () => {
+  //     let randomNumber = Math.floor(
+  //       Math.random() * this.state.allMemeImgs.length
+  //     );
+  //     this.setState({ randomImg: this.state.allMemeImgs[randomNumber].url });
+  //   };
   return (
     <div>
       <div className="main">
@@ -84,10 +113,10 @@ const ScrapBook = ({ user, setUser }) => {
                 {" "}
                 <BsCalendar2DateFill size={30} />{" "}
               </button>
-              <div className="btn1">
+              <button className="btn1" onClick={fetchMeme}>
                 {" "}
                 <BiWebcam size={30} />
-              </div>
+              </button>
               <div className="btn1">
                 {" "}
                 <FiPenTool size={30} />{" "}
@@ -150,8 +179,23 @@ const ScrapBook = ({ user, setUser }) => {
                   })}
                 </div>
               ) : null}
+              <div>
+                <button onClick={fetchMeme}>Meme</button>
 
-              {/* //////////To Do List */}
+                <img src={meme} style={{ height: 200, width: 200 }} />
+              </div>
+              //{" "}
+              {/* <div>
+              //   {fetchMeme ? (
+              //     <div>
+              //       {meme.map((item, index) => {
+              //         let randomNum = Math.floor(Math.random() * meme.length);
+              //         setMeme(meme[randomNum].url);
+              //         return <img src={item} alt="Memes" />;
+              //       })}
+              //     </div>
+              //   ) : null}
+              // </div> */}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
