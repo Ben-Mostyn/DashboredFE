@@ -28,6 +28,7 @@ import "/Users/dasha/Desktop/dashboardFE/src/components/utilsComponents/textbox.
 import ImageHandle from "../components/utilsComponents/image-loader/image_upload";
 
 
+
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
 const ScrapBook = ({ user, setUser }) => {
