@@ -3,10 +3,13 @@ import Alert from "./Alerts";
 import React, { useEffect, useState } from "react";
 import { Image } from "cloudinary-react";
 
-export default function ImageHandle() {
-  const [image, setImage] = useState();
-  const [imageUrl, setImageUrl] = useState([]);
-
+export default function ImageHandle({
+  user,
+  image,
+  setImage,
+  setImageUrl,
+  imageUrl,
+}) {
   // !UPLOAD
   const uploadImage = async (image) => {
     try {
@@ -21,6 +24,14 @@ export default function ImageHandle() {
         }
       );
       const data = await response.json();
+      const res = await fetch(`${process.env.REACT_APP_REST_API}addImage`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          image: data.secure_url,
+          user: user,
+        }),
+      });
       return data.secure_url;
     } catch (error) {
       console.error(error);
@@ -39,23 +50,6 @@ export default function ImageHandle() {
       imageArr.push(image);
       setImageUrl(imageArr);
       console.log(imageUrl, "i am imageUrl");
-    }
-  };
-
-  const updateImage = async (image) => {
-    try {
-      await fetch(`${image}/updateImage`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("myToken")}`, //this maybe different for you?
-        },
-        body: JSON.stringify(image),
-      });
-      console.log(image, "i am updateimage");
-      return image;
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -82,7 +76,7 @@ export default function ImageHandle() {
 
       <h1>image url</h1>
 
-      {updateImage ? (
+      {imageUrl ? (
         <div>
           {imageUrl.map((imageUrl, index) => {
             return (
@@ -95,9 +89,6 @@ export default function ImageHandle() {
           })}
         </div>
       ) : null}
-
-      <span>image url</span>
-      <button onClick={updateImage}>image url</button>
     </div>
   );
 }

@@ -50,3 +50,8 @@ export const tokenCheck = async (setUser) => {
     console.log(error);
   }
 };
+
+export const getImages = async (user) => {
+  try {
+  } catch (error) {}
+};
