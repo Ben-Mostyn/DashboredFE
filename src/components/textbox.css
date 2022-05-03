@@ -12,6 +12,7 @@ textarea:focus{
     border: none;
     border-radius: 10%;
     padding: 4px;
+    background-color: white;
 
 }
 
@@ -25,7 +26,7 @@ textarea:not(:focus){
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-    background-color: white;
+    
     border-radius: 10%;
     padding: 4px;
 
