@@ -31,6 +31,7 @@ const ScrapBook = ({ user, setUser }) => {
 
   // !image state
   const [image, setImage] = useState();
+  const [imageUrl, setImageUrl] = useState([]);
 
   // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
@@ -157,7 +158,13 @@ const ScrapBook = ({ user, setUser }) => {
 
             {/* <MemeGenerator /> */}
 
-            <ImageHandle />
+            <ImageHandle
+              user={user}
+              image={image}
+              setImage={setImage}
+              imageUrl={imageUrl}
+              setImageUrl={setImageUrl}
+            />
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
