@@ -15,12 +15,16 @@ import ImageHandle from "../components/utilsComponents/image-loader/image_upload
 import "./main.css";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiText } from "react-icons/bi";
-import { BsCalendar2DateFill } from "react-icons/bs";
 import { BiWebcam } from "react-icons/bi";
 import { FiPenTool } from "react-icons/fi";
 import { AiOutlineGif } from "react-icons/ai";
 import { HiMusicNote } from "react-icons/hi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { RiTodoLine } from "react-icons/ri";
+import { RiEmotionLaughLine } from "react-icons/ri";
+import { BsChatRightQuote } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
+
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
@@ -29,9 +33,12 @@ const ScrapBook = ({ user, setUser }) => {
   const [toDo, setToDo] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(""); //the one you are typing
   const [todos, setTodos] = useState([]);
+  const [todoInput, setTodoInput] = useState();
 
   // !image state
   const [image, setImage] = useState();
+  const [imageUrl, setImageUrl] = useState([]);
+  const [showImage, setShowImage] = useState(false);
 
   // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
@@ -59,6 +66,16 @@ const ScrapBook = ({ user, setUser }) => {
 /// font size state
   const [fontSize, setFontSize] =  useState(15);
 
+  //!Quote State
+  const [advice, setAdvice] = useState("");
+  const [showQuote, setShowQuote] = useState(false);
+
+  //! Advice Function
+  let handleFetch = async () => {
+    let response = await fetch("https://api.adviceslip.com/advice");
+    let data = await response.json();
+    setAdvice(data.slip);
+  };
 
   //!   creates textbox onclick
   const createText = () => {
@@ -70,10 +87,12 @@ const ScrapBook = ({ user, setUser }) => {
   //   !deletes targeted textbox
   const removeHandler = (index, i) => {
     let storedArr = [...textArea];
-    storedArr.splice(index, 1);
     setTextArea(storedArr);
+    storedArr.splice(index, 1);
   };
+
   // ! creates todo
+
   const createNewTodo = (currentTodo) => {
     let todosArray = [...todos];
     todosArray.push({ todo: currentTodo, isCompleted: false });
@@ -84,6 +103,7 @@ const ScrapBook = ({ user, setUser }) => {
     todosArray[index].isCompleted = !todosArray[index].isCompleted;
     setTodos(todosArray);
   };
+
   // ! deletes todo
   const deleteTodo = (index) => {
     let todosArray = [...todos];
@@ -145,7 +165,7 @@ const ScrapBook = ({ user, setUser }) => {
               {/* working*/}
               <button className="btn1" onClick={() => setToDo(!toDo)}>
                 {" "}
-                <BsCalendar2DateFill size={30} />{" "}
+                <RiTodoLine size={30} />{" "}
               </button>
               <button
                 className="btn1"
@@ -154,34 +174,43 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <BiWebcam size={30} />
+                <RiEmotionLaughLine size={30} />
               </button>
-              <div className="btn1">
+              <button
+                className="btn1"
+                onClick={() => {
+                  !showImage ? setShowImage(true) : setShowImage(false);
+                }}
+              >
                 {" "}
                 <FiPenTool size={30} />{" "}
-              </div>
-              <div className="btn1">
+              </button>
+              <button
+                className="btn1"
+                onClick={() => {
+                  !showQuote ? setShowQuote(true) : setShowQuote(false);
+                }}
+              >
                 {" "}
-                <AiOutlineGif size={30} />
-              </div>
+                <BsChatRightQuote size={30} />
+              </button>
               <div className="btn1">
                 <HiMusicNote size={30} />
               </div>
             </div>
 
-            <button
+            <button className= "btn1"
               onClick={() => {
                 setUser();
                 localStorage.clear();
               }}
             >
-              Logout
+             {" "}
+             <BiLogOut size={30} />
             </button>
-            <h1>hello!</h1>
+
 
             {/* <MemeGenerator /> */}
-
-            <ImageHandle />
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
@@ -232,6 +261,16 @@ const ScrapBook = ({ user, setUser }) => {
                   })}
                 </div>
               ) : null}
+              {/* Quote ///////////////////////////////////////////// */}
+              {showQuote ? (
+                <Draggable>
+                  <div>
+                    <h2>{advice.advice}</h2>
+                    <button onClick={handleFetch}>Randomize Quote</button>
+                  </div>
+                </Draggable>
+              ) : null}
+              {/* Meme ////////////////////////////////////////////////////// */}
               <div>
                 {!showMeme ? null : (
                   <div>
@@ -241,6 +280,18 @@ const ScrapBook = ({ user, setUser }) => {
                   </div>
                 )}
               </div>{" "}
+              {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}
+              <div>
+                {showImage ? (
+                  <ImageHandle
+                    user={user}
+                    image={image}
+                    setImage={setImage}
+                    imageUrl={imageUrl}
+                    setImageUrl={setImageUrl}
+                  />
+                ) : null}
+              </div>
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
