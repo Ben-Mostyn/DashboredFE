@@ -249,3 +249,21 @@ border-radius: 50%;
   position: relative;
   overflow-y: auto;
 }
+
+.textBackgroundPicker{
+  height: 200px;
+ 
+  
+ position: absolute;
+ left:86%;
+ top:85px;
+}
+
+.fontColorPicker{
+  height: 200px;
+ 
+  
+ position: absolute;
+ left:86%;
+ top:250px;
+}

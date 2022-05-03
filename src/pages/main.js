@@ -5,6 +5,7 @@ import Textbox from "../components/utilsComponents/textbox";
 import "./main.css";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
+import { BlockPicker} from 'react-color';
 
 import Upload from "../components/utilsComponents/image-loader/image_upload";
 // import  NavBar from "../components/Navbar";
@@ -46,11 +47,13 @@ const ScrapBook = ({ user, setUser }) => {
   const [zIndex, setZIndex] = useState(1);
   
 
+
+
   //!   creates textbox onclick
   const createText = () => {
     setShowBtn(true);
     setTextArea([...textArea, textInput]);
-    setTextInput();
+    setTextInput();  
   };
 
   //   !deletes targeted textbox
@@ -86,10 +89,17 @@ const ScrapBook = ({ user, setUser }) => {
         todosArray.splice(index, 1);
         setTodos(todosArray);
       }
- 
+ /// color picker
+
+ const [color, setColor] = useState('ff0000');
+ const [colorFont, setColorFont] = useState('ff0000');
+const [visible, setVisible] = useState(false);
+
  
 
  
+ 
+
  
   return (
 
@@ -97,17 +107,26 @@ const ScrapBook = ({ user, setUser }) => {
       <div className="main">
         
         <div className="playArea">
+          
+      {!visible ? null :  (
+        <div>
+        <BlockPicker  className="textBackgroundPicker"color={color}   onChangeComplete={ (color) => {setColor(color.hex)}}/>
+         <BlockPicker className="fontColorPicker" color={colorFont}  onChangeComplete={ (colorFont) => {setColorFont(colorFont.hex)}}/>
+      
+</div>
+      ) }
           <Clock/>
           <div className="nav">
           <div className="half1">
-            <button className="btn1" onClick={createText}><BiText size={30} /></button> {/* working*/}
+            <button className="btn1" onClick={ () =>{visible ? setVisible(false): setVisible(true) } } ><BiText size={30} onClick={createText} /></button> working
 
    <button className="btn1" onClick={() => setToDo(!toDo)}> <BsCalendar2DateFill size={30}/> </button>
-    <div className="btn1"> <BiWebcam size={30}/></div>
+    <div className="btn1" > <BiWebcam size={30}/></div>
     <div className="btn1"> <FiPenTool size={30}/> </div>
     <div className="btn1"> <AiOutlineGif size={30}/></div>
     <div className="btn1"><HiMusicNote size={30}/></div>
-    <div className="btn1"><HiMusicNote size={30}/></div>
+    
+    
     
     </div>
             
@@ -130,6 +149,14 @@ const ScrapBook = ({ user, setUser }) => {
 
 <div className="mainPlayArea">
 
+{/* mess around div colorpicker  */}
+ 
+
+
+
+
+
+
 {/* Text Box return ///////////////////////////////////////////////////////// */}
       {showBtn ? (
         <div className="textParent">
@@ -146,6 +173,12 @@ const ScrapBook = ({ user, setUser }) => {
                     id="textbox"
                     key={i}
                     placeholder="Enter here"
+                    style={{                          //style react color
+                      backgroundColor: color,
+                      transition: 'ease all 500ms',
+                      color: colorFont
+                    }}
+
                     onChange={(e) => {
                       setTextInput(e.target.value);
                     }}
