@@ -36,6 +36,7 @@ const ScrapBook = ({ user, setUser }) => {
   // !image state
   const [image, setImage] = useState();
   const [imageUrl, setImageUrl] = useState([]);
+  const [showImage, setShowImage] = useState(false);
 
   // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
@@ -132,10 +133,15 @@ const ScrapBook = ({ user, setUser }) => {
                 {" "}
                 <RiEmotionLaughLine size={30} />
               </button>
-              <div className="btn1">
+              <button
+                className="btn1"
+                onClick={() => {
+                  !showImage ? setShowImage(true) : setShowImage(false);
+                }}
+              >
                 {" "}
                 <FiPenTool size={30} />{" "}
-              </div>
+              </button>
               <button
                 className="btn1"
                 onClick={() => {
@@ -162,14 +168,6 @@ const ScrapBook = ({ user, setUser }) => {
 
 
             {/* <MemeGenerator /> */}
-
-            <ImageHandle
-              user={user}
-              image={image}
-              setImage={setImage}
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-            />
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
@@ -225,6 +223,18 @@ const ScrapBook = ({ user, setUser }) => {
                   </div>
                 )}
               </div>{" "}
+              {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}
+              <div>
+                {showImage ? (
+                  <ImageHandle
+                    user={user}
+                    image={image}
+                    setImage={setImage}
+                    imageUrl={imageUrl}
+                    setImageUrl={setImageUrl}
+                  />
+                ) : null}
+              </div>
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
