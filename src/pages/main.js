@@ -1,22 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import Draggable from "react-draggable";
-import { DraggableCore } from "react-draggable";
-import { Resizable } from "re-resizable";
 
 // ! COMPONENTS
-import Upload from "../components/utilsComponents/image-loader/image_upload";
 import Clock from "../components/clock";
 // import MemeGenerator from "../components/utilsComponents/memeApi";
 import ImageHandle from "../components/utilsComponents/image-loader/image_upload";
 
 // ! CSS
 import "./main.css";
-import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiText } from "react-icons/bi";
-import { BiWebcam } from "react-icons/bi";
 import { FiPenTool } from "react-icons/fi";
-import { AiOutlineGif } from "react-icons/ai";
 import { HiMusicNote } from "react-icons/hi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { RiTodoLine } from "react-icons/ri";
@@ -32,7 +26,6 @@ const ScrapBook = ({ user, setUser }) => {
   const [toDo, setToDo] = useState(false);
   const [currentTodo, setCurrentTodo] = useState(""); //the one you are typing
   const [todos, setTodos] = useState([]);
-  const [todoInput, setTodoInput] = useState();
 
   // !image state
   const [image, setImage] = useState();
@@ -43,13 +36,11 @@ const ScrapBook = ({ user, setUser }) => {
   const [showBtn, setShowBtn] = useState(false);
   const [textArea, setTextArea] = useState([]);
   const [textInput, setTextInput] = useState();
-  const [workXPs, setWorkXPs] = useState(0);
-  const [zIndex, setZIndex] = useState(1);
+  // const [workXPs, setWorkXPs] = useState(0);
+  // const [zIndex, setZIndex] = useState(1);
 
   // ! meme state
   const [meme, setMeme] = useState([""]);
-  const [memeBtn, setMemeBtn] = useState();
-  const [memeArr, setMemeArr] = useState([]);
   const [showMeme, setShowMeme] = useState(false);
 
   //!Quote State
@@ -157,16 +148,16 @@ const ScrapBook = ({ user, setUser }) => {
               </div>
             </div>
 
-            <button className= "btn1"
+            <button
+              className="btn1"
               onClick={() => {
                 setUser();
                 localStorage.clear();
               }}
             >
-             {" "}
-             <BiLogOut size={30} />
+              {" "}
+              <BiLogOut size={30} />
             </button>
-
 
             {/* <MemeGenerator /> */}
           </div>
@@ -220,7 +211,11 @@ const ScrapBook = ({ user, setUser }) => {
                   <div>
                     <button onClick={fetchMeme}>Meme</button>
 
-                    <img src={meme} style={{ height: 200, width: 200 }} />
+                    <img
+                      src={meme}
+                      style={{ height: 200, width: 200 }}
+                      alt="meme"
+                    />
                   </div>
                 )}
               </div>{" "}
@@ -280,6 +275,9 @@ const ScrapBook = ({ user, setUser }) => {
                 </Draggable>
               )}
             </div>
+          </div>
+          <div>
+            <h1 className="userHead">{`${user}'s Dashbored`}</h1>
           </div>
         </div>
       </div>
