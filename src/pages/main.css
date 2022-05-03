@@ -30,12 +30,12 @@
 }
 
 .nav {
-  height: 85%;
+  height: 80%;
   width: 5%;
   /* border: 2px black solid; */
   position: absolute;
-  top: 7.5%;
-  left: 5%;
+  top: 10%;
+  left: 2%;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5.5px);
@@ -187,7 +187,7 @@
 
 .textbox {
   border: 2px solid black;
-  font-size: 15px;
+  /* font-size: 15px; */
   resize: both;
 }
 
@@ -206,7 +206,7 @@
   width: 65%;
   /* border: 2px solid red; */
   position: absolute;
-  left: 20%;
+  left: 15%;
   top: 10%;
   right: 0%;
   bottom: 0%;
@@ -227,13 +227,71 @@
   overflow-y: auto;
 }
 
-.userHead {
-  z-index: 1000;
+.textBackgroundPicker {
+  /* height: 200px; */
+  /* margin-bottom: 100px; */
+  left: 6%;
   position: absolute;
-  bottom: 3%;
-  left: 45%;
-  font-size: 3rem;
+  top: 2%;
+}
+
+.fontColorPicker {
+  margin-bottom: 100px;
+  position: absolute;
+  left: 6%;
+  top: 250px;
+}
+
+.fontModal {
+  height: 80%;
+  width: 12%;
+  background: rgba(255, 255, 255, 0.667);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  position: absolute;
+  left: 83%;
+  top: 85px;
+
+  object-fit: cover;
+}
+
+.fontsmall {
+  font-size: 50px;
+  position: absolute;
+  top: 90%;
+  border: none;
+}
+.fontbig {
+  font-size: 50px;
+  position: absolute;
+  top: 90%;
+  border: none;
+  left: 30px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 150px;
+  left: 10px;
+}
+
+.userHead {
+  font-size: 4rem;
   color: rgba(255, 255, 255, 0.667);
-  -webkit-text-stroke: 0.2px black;
+  -webkit-text-stroke: 0.1px black;
   letter-spacing: 2px;
+  position: absolute;
+  left: 40%;
+  bottom: 2.5%;
+}
+.logout {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Draggable from "react-draggable";
+import { CirclePicker } from "react-color";
 
 // ! COMPONENTS
 import Clock from "../components/clock";
@@ -39,9 +40,22 @@ const ScrapBook = ({ user, setUser }) => {
   // const [workXPs, setWorkXPs] = useState(0);
   // const [zIndex, setZIndex] = useState(1);
 
+  // font changer state
+
+  const [fontValue, setFontValue] = useState();
+
   // ! meme state
   const [meme, setMeme] = useState([""]);
   const [showMeme, setShowMeme] = useState(false);
+
+  /// color picker
+
+  const [color, setColor] = useState("ff0000");
+  const [colorFont, setColorFont] = useState("ff0000");
+  const [visible, setVisible] = useState(false);
+
+  /// font size state
+  const [fontSize, setFontSize] = useState(15);
 
   //!Quote State
   const [advice, setAdvice] = useState("");
@@ -101,10 +115,65 @@ const ScrapBook = ({ user, setUser }) => {
 
   // !random meme gen
 
+  // font changer
+
+  const fontPicker = () => {
+    const selectedValue = document.getElementById("list").value;
+    setFontValue(selectedValue);
+
+    console.log(selectedValue, "selectedValue");
+  };
+
   return (
     <div>
       <div className="main">
         <div className="playArea">
+          {!visible ? null : (
+            <div className="fontModal">
+              <CirclePicker
+                className="textBackgroundPicker"
+                color={color}
+                onChangeComplete={(color) => {
+                  setColor(color.hex);
+                }}
+                circleSize={12}
+                width={180}
+              />
+              <CirclePicker
+                className="fontColorPicker"
+                color={colorFont}
+                onChangeComplete={(colorFont) => {
+                  setColorFont(colorFont.hex);
+                }}
+                circleSize={12}
+                width={180}
+              />
+              {/* <button fontFamily={fontFamily} onClick={() => {setFontFamily("Arial")}}> Arial</button> */}
+              <select className="dropdown" id="list" onChange={fontPicker}>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial</option>
+                <option value="Gill Sans">Gil Sans</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                {/* <option value="">Times New roman</option> */}
+              </select>
+              <button
+                className="fontbig"
+                onClick={() => {
+                  setFontSize(fontSize + 2);
+                }}
+              >
+                +
+              </button>
+              <button
+                className="fontsmall"
+                onClick={() => {
+                  setFontSize(fontSize - 2);
+                }}
+              >
+                -
+              </button>
+            </div>
+          )}
           <Clock />
           <div className="nav">
             <div className="half1">
@@ -148,16 +217,18 @@ const ScrapBook = ({ user, setUser }) => {
               </div>
             </div>
 
-            <button
-              className="btn1"
-              onClick={() => {
-                setUser();
-                localStorage.clear();
-              }}
-            >
-              {" "}
-              <BiLogOut size={30} />
-            </button>
+            <div className="logout">
+              <button
+                className="btn1"
+                onClick={() => {
+                  setUser();
+                  localStorage.clear();
+                }}
+              >
+                {" "}
+                <BiLogOut size={30} />
+              </button>
+            </div>
 
             {/* <MemeGenerator /> */}
           </div>
@@ -176,11 +247,27 @@ const ScrapBook = ({ user, setUser }) => {
                             <AiOutlineCloseCircle />
                           </button>
                           <div className="handle">Drag Me!</div>
+                          <button
+                            onClick={() => {
+                              visible ? setVisible(false) : setVisible(true);
+                            }}
+                          >
+                            {" "}
+                            Edit
+                          </button>
                           <textarea
                             className="draggable textbox"
                             id="textbox"
                             key={i}
                             placeholder="Enter here"
+                            style={{
+                              //style react color
+                              backgroundColor: color,
+                              transition: "ease all 500ms",
+                              color: colorFont,
+                              fontSize: `${fontSize}px`,
+                              fontFamily: `${fontValue}`,
+                            }}
                             onChange={(e) => {
                               setTextInput(e.target.value);
                             }}
@@ -189,6 +276,20 @@ const ScrapBook = ({ user, setUser }) => {
 
                             //  onMouseOver={hover}
                           />
+                          <button
+                            onClick={() => {
+                              setFontSize(fontSize + 2);
+                            }}
+                          >
+                            +
+                          </button>
+                          <button
+                            onClick={() => {
+                              setFontSize(fontSize - 2);
+                            }}
+                          >
+                            -
+                          </button>
                         </div>
                       </Draggable>
                     );
@@ -208,15 +309,17 @@ const ScrapBook = ({ user, setUser }) => {
               {/* Meme ////////////////////////////////////////////////////// */}
               <div>
                 {!showMeme ? null : (
-                  <div>
-                    <button onClick={fetchMeme}>Meme</button>
+                  <Draggable>
+                    <div>
+                      <button onClick={fetchMeme}>Meme</button>
 
-                    <img
-                      src={meme}
-                      style={{ height: 200, width: 200 }}
-                      alt="meme"
-                    />
-                  </div>
+                      <img
+                        src={meme}
+                        style={{ height: 200, width: 200 }}
+                        alt="meme"
+                      />
+                    </div>
+                  </Draggable>
                 )}
               </div>{" "}
               {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}

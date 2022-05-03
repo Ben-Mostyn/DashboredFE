@@ -49,7 +49,17 @@ export const tokenCheck = async (setUser) => {
   }
 };
 
-export const getImages = async (user) => {
+export const getImages = async (user, setUser, image) => {
   try {
+    const res = await fetch(`${process.env.REACT_APP_REST_API}addImages`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user: user,
+      }),
+    });
+    const data = await res.json();
+    console.log(data, "i am data getImages");
+    setUser(user.images);
   } catch (error) {}
 };
