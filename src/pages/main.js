@@ -1,15 +1,16 @@
 import React from "react";
-import ToDoTemplate from "../components/utilsComponents/todo";
 import { useState } from "react";
-import Textbox from "../components/utilsComponents/textbox";
-import "./main.css";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
 
+// ! COMPONENTS
 import Upload from "../components/utilsComponents/image-loader/image_upload";
-// import  NavBar from "../components/Navbar";
 import Clock from "../components/clock";
-// import Modal from "src/components/modal.js"
+// import MemeGenerator from "../components/utilsComponents/memeApi";
+import ImageHandle from "../components/utilsComponents/image-loader/image_upload";
+
+// ! CSS
+import "./main.css";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiText } from "react-icons/bi";
 import { BsCalendar2DateFill } from "react-icons/bs";
@@ -19,28 +20,29 @@ import { AiOutlineGif } from "react-icons/ai";
 import { HiMusicNote } from "react-icons/hi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import "../components/textbox.css";
-
-// import App from "../utils/index";
-
-// import MemeGenerator from "../components/utilsComponents/memeApi";
-
-import ImageHandle from "../components/utilsComponents/image-loader/image_upload";
-
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
 const ScrapBook = ({ user, setUser }) => {
+  // ! Todo state
   const [toDo, setToDo] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState(""); //the one you are typing
+  const [todos, setTodos] = useState([]);
+
+  // !image state
   const [image, setImage] = useState();
 
-  //Testing
-
+  // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
   const [textArea, setTextArea] = useState([]);
   const [textInput, setTextInput] = useState();
-  const [activeDrags, setActiveDrags] = useState({ zIndex: 10 });
-  const [deltaPosition, setDeltaPosition] = useState({ x: 0, y: 0 });
   const [workXPs, setWorkXPs] = useState(0);
   const [zIndex, setZIndex] = useState(1);
+
+  // ! meme state
+  const [meme, setMeme] = useState([""]);
+  const [memeBtn, setMemeBtn] = useState();
+  const [memeArr, setMemeArr] = useState([]);
+  const [showMeme, setShowMeme] = useState(false);
 
   //!   creates textbox onclick
   const createText = () => {
@@ -55,16 +57,7 @@ const ScrapBook = ({ user, setUser }) => {
     storedArr.splice(index, 1);
     setTextArea(storedArr);
   };
-
-  ////////////////To Do Functionality
-  const [currentTodo, setCurrentTodo] = useState(""); //the one you are typing
-  const [todos, setTodos] = useState([
-    //the ones you have already written
-    {
-      todo: "Add new todo",
-      isCompleted: true,
-    },
-  ]);
+  // ! creates todo
   const createNewTodo = (currentTodo) => {
     let todosArray = [...todos];
     todosArray.push({ todo: currentTodo, isCompleted: false });
@@ -75,12 +68,25 @@ const ScrapBook = ({ user, setUser }) => {
     todosArray[index].isCompleted = !todosArray[index].isCompleted;
     setTodos(todosArray);
   };
-
+  // ! deletes todo
   const deleteTodo = (index) => {
     let todosArray = [...todos];
     todosArray.splice(index, 1);
     setTodos(todosArray);
   };
+
+  // ! meme generator
+
+  const fetchMeme = async () => {
+    const res = await fetch("https://api.imgflip.com/get_memes");
+    const data = await res.json();
+    // console.log(data.data, "i am data");
+    setMeme(data.data.memes);
+    let randomNum = Math.floor(Math.random() * meme.length);
+    setMeme(meme[randomNum].url);
+  };
+
+  // !random meme gen
 
   return (
     <div>
@@ -97,10 +103,15 @@ const ScrapBook = ({ user, setUser }) => {
                 {" "}
                 <BsCalendar2DateFill size={30} />{" "}
               </button>
-              <div className="btn1">
+              <button
+                className="btn1"
+                onClick={() => {
+                  !showMeme ? setShowMeme(true) : setShowMeme(false);
+                }}
+              >
                 {" "}
                 <BiWebcam size={30} />
-              </div>
+              </button>
               <div className="btn1">
                 {" "}
                 <FiPenTool size={30} />{" "}
@@ -163,8 +174,15 @@ const ScrapBook = ({ user, setUser }) => {
                   })}
                 </div>
               ) : null}
+              <div>
+                {!showMeme ? null : (
+                  <div>
+                    <button onClick={fetchMeme}>Meme</button>
 
-              {/* //////////To Do List */}
+                    <img src={meme} style={{ height: 200, width: 200 }} />
+                  </div>
+                )}
+              </div>{" "}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
