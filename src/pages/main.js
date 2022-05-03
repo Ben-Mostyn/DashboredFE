@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Draggable from "react-draggable";
 import { DraggableCore } from "react-draggable";
+import { Resizable } from "re-resizable";
 
 // ! COMPONENTS
 import Upload from "../components/utilsComponents/image-loader/image_upload";
