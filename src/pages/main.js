@@ -14,12 +14,16 @@ import ImageHandle from "../components/utilsComponents/image-loader/image_upload
 import "./main.css";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BiText } from "react-icons/bi";
-import { BsCalendar2DateFill } from "react-icons/bs";
 import { BiWebcam } from "react-icons/bi";
 import { FiPenTool } from "react-icons/fi";
 import { AiOutlineGif } from "react-icons/ai";
 import { HiMusicNote } from "react-icons/hi";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { RiTodoLine } from "react-icons/ri";
+import { RiEmotionLaughLine } from "react-icons/ri";
+import { BsChatRightQuote } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
+
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
@@ -33,6 +37,7 @@ const ScrapBook = ({ user, setUser }) => {
   // !image state
   const [image, setImage] = useState();
   const [imageUrl, setImageUrl] = useState([]);
+  const [showImage, setShowImage] = useState(false);
 
   // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
@@ -118,7 +123,7 @@ const ScrapBook = ({ user, setUser }) => {
               {/* working*/}
               <button className="btn1" onClick={() => setToDo(!toDo)}>
                 {" "}
-                <BsCalendar2DateFill size={30} />{" "}
+                <RiTodoLine size={30} />{" "}
               </button>
               <button
                 className="btn1"
@@ -127,12 +132,17 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <BiWebcam size={30} />
+                <RiEmotionLaughLine size={30} />
               </button>
-              <div className="btn1">
+              <button
+                className="btn1"
+                onClick={() => {
+                  !showImage ? setShowImage(true) : setShowImage(false);
+                }}
+              >
                 {" "}
                 <FiPenTool size={30} />{" "}
-              </div>
+              </button>
               <button
                 className="btn1"
                 onClick={() => {
@@ -140,32 +150,25 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <AiOutlineGif size={30} />
+                <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
                 <HiMusicNote size={30} />
               </div>
             </div>
 
-            <button
+            <button className= "btn1"
               onClick={() => {
                 setUser();
                 localStorage.clear();
               }}
             >
-              Logout
+             {" "}
+             <BiLogOut size={30} />
             </button>
-            <h1>hello!</h1>
+
 
             {/* <MemeGenerator /> */}
-
-            <ImageHandle
-              user={user}
-              image={image}
-              setImage={setImage}
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-            />
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
@@ -221,6 +224,18 @@ const ScrapBook = ({ user, setUser }) => {
                   </div>
                 )}
               </div>{" "}
+              {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}
+              <div>
+                {showImage ? (
+                  <ImageHandle
+                    user={user}
+                    image={image}
+                    setImage={setImage}
+                    imageUrl={imageUrl}
+                    setImageUrl={setImageUrl}
+                  />
+                ) : null}
+              </div>
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
