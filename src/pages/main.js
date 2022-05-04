@@ -151,22 +151,6 @@ const ScrapBook = ({ user, setUser }) => {
     <div>
       <div className="main">
         <div className="playArea">
-          {/* !IMAGE MODAL */}
-          {/* <div>
-            {showImage ? (
-              <ImageHandle
-                user={user}
-                image={image}
-                setImage={setImage}
-                uploadedImages={uploadedImages}
-                setUploadedImages={setUploadedImages}
-              />
-            ) : null}
-          </div>
-          {uploadedImages.map((imageUrl, index) => (
-            <img alt="uploaded" key={index} src={imageUrl} />
-          ))} */}
-          {/* !TEXT BOX MODEL */}
           {!visible ? null : (
             <div className="fontModal">
               <div className="background">
@@ -346,9 +330,11 @@ const ScrapBook = ({ user, setUser }) => {
               {/* Quote ///////////////////////////////////////////// */}
               {showQuote ? (
                 <Draggable>
-                  <div>
-                    <h2>{advice.advice}</h2>
-                    <button onClick={handleFetch}>Randomize Quote</button>
+                  <div className="quoteContainer">
+                    <h2 className="quote">{advice.advice}</h2>
+                    <button className="quoteBtn" onClick={handleFetch}>
+                      Randomize
+                    </button>
                   </div>
                 </Draggable>
               ) : null}
