@@ -142,18 +142,36 @@ const ScrapBook = ({ user, setUser }) => {
                   
       {!visible ? null :  (
         <div className="fontModal">
+         <div className="background">
+           <h1 className="bgh1">Background</h1>
+         </div>
+         <div className="fontpickerdiv">
         <CirclePicker className="textBackgroundPicker"color={color}   onChangeComplete={ (color) => {setColor(color.hex)}} circleSize={12} width={180}/>
+        </div>
+        <div className="background1">
+           <h1 className="bgh1">Font-Color</h1>
+         </div>
+        <div className="fontpickerdiv1">
          <CirclePicker className="fontColorPicker" color={colorFont}  onChangeComplete={ (colorFont) => {setColorFont(colorFont.hex)}} circleSize={12} width={180}/>
          {/* <button fontFamily={fontFamily} onClick={() => {setFontFamily("Arial")}}> Arial</button> */}
+        </div>
+        <div className="background3">
+           <h1 className="bgh1">Font-style</h1>
+         </div>
          <select className="dropdown" id="list"    onChange={fontPicker}>
-           <option value="Times New Roman" >Times New Roman</option>
+           <option value="Times New Roman"  id="timesnew">Times New Roman</option>
            <option value="Arial">Arial</option>
            <option value="Gill Sans">Gil Sans</option>
            <option value="Trebuchet MS">Trebuchet MS</option>
            {/* <option value="">Times New roman</option> */}
          </select>
-         <button className="fontbig" onClick={() => {setFontSize (fontSize + 2)}}>+</button>
-          <button className="fontsmall" onClick={() => {setFontSize (fontSize - 2)}}>-</button>
+         <div className="background2">
+           <h1 className="bgh1">Font-Size</h1>
+         </div>
+         <div className="fontbuttons">
+         <button className="btn1" id="fontbig" onClick={() => {setFontSize (fontSize + 2)}}>+</button>
+          <button className="btn1" id="fontsmall" onClick={() => {setFontSize (fontSize - 2)}}>-</button>
+          </div>
           </div>
           ) }
           <Clock />
@@ -199,7 +217,7 @@ const ScrapBook = ({ user, setUser }) => {
               </div>
             </div>
 
-            <button className= "btn1"
+            <button className= "btn2"
               onClick={() => {
                 setUser();
                 localStorage.clear();
@@ -222,7 +240,7 @@ const ScrapBook = ({ user, setUser }) => {
                   {textArea.map((workXP, i) => {
                     return (
                       <Draggable handle=".handle">
-                        <div>
+                        <div className="textborder">
                           <button onClick={removeHandler} id="x">
                             <AiOutlineCloseCircle />
                           </button>
@@ -251,8 +269,7 @@ const ScrapBook = ({ user, setUser }) => {
                             
                             //  onMouseOver={hover}
                           />
-                        <button onClick={() => {setFontSize (fontSize + 2)}}>+</button>
-                        <button onClick={() => {setFontSize (fontSize - 2)}}>-</button>
+                       
                    
                         </div>
                       </Draggable>
