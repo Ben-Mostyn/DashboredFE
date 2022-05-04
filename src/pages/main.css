@@ -548,3 +548,20 @@
   margin: 0;
   padding: 0.3%;
 }
+
+.shapeModal1 {
+  height: 300px;
+  width: 150px;
+  background-color: white;
+  position: absolute;
+  bottom: 1%;
+  left: 6%;
+  border-radius: 8%;
+  border: black 1px solid;
+}
+
+.shapeContainer {
+  border: red solid 2px;
+  width: 5%;
+  position: relative;
+}
