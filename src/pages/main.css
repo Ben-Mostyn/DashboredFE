@@ -29,25 +29,28 @@
   }
 }
 
-.nav {
-  height: 80%;
-  width: 5%;
-  /* border: 2px black solid; */
-  position: absolute;
-  top: 10%;
-  left: 2%;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
-  border-radius: 10px;
-  /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
-  overflow: hidden;
-  object-fit: contain;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  flex-direction: column;
+
+.nav{
+height: 80%;
+width: 5%;
+/* border: 2px black solid; */
+position: absolute;
+top:10%;
+left: 2%;
+background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 1px );
+-webkit-backdrop-filter: blur( 1px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+/* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+overflow: hidden;
+object-fit: contain;
+display: flex;
+justify-content: flex-end;
+align-items: flex-start;
+flex-direction: column;
+
 }
 
 .half1 {
@@ -92,6 +95,28 @@
   transform: scale(1.05);
 
   animation: shuffle 3s infinite linear;
+}
+
+.btn2{
+  height: 50px;
+  width: 50px;
+ 
+  background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 0px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 2px;
+  cursor: pointer;
+  
+ margin-left: 10px;
+ margin-bottom: 5px;
+  
 }
 
 @keyframes shuffle {
@@ -227,30 +252,124 @@
   overflow-y: auto;
 }
 
-.textBackgroundPicker {
+.background{
+  height: 6%;
+  width: 80%;
+  margin-left: 10px;
+
+  color: white;
+  border-bottom: 6px solid rgba( 255, 255, 255, 0.18 );
+display: flex;
+justify-content: flex-start;
+align-items: flex-end;
+}
+
+.background1{
+  top: 54%;
+  height: 5%;
+  width: 80%;
+  margin-left: 10px;
+position: absolute;
+ 
+  font-size: 20px;
+  border-bottom: 6px solid rgba( 255, 255, 255, 0.18 );
+display: flex;
+justify-content: flex-start;
+align-items: flex-end;
+}
+
+.bgh1{
+  font-size: 15px;
+  color: rgb(6, 6, 6);
+}
+
+.background2{
+  top: 78%;
+  height: 5%;
+  width: 80%;
+  margin-left: 10px;
+position: absolute;
+  color: white;
+  font-size: 20px;
+  border-bottom: 6px solid rgba( 255, 255, 255, 0.18 );
+display: flex;
+justify-content: flex-start;
+align-items: flex-end;
+}
+
+.background3{
+  top: 31%;
+  height: 5%;
+  width: 80%;
+  margin-left: 10px;
+position: absolute;
+  color: white;
+  font-size: 20px;
+  border-bottom: 6px solid rgba( 255, 255, 255, 0.18 );
+display: flex;
+justify-content: flex-start;
+align-items: flex-end;
+}
+.fontpickerdiv{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 38px;
+  left: 4px;
+  height: 16%;
+  width: 95%;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
+
+.fontpickerdiv1{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 60%;
+  left: 4px;
+  height: 16%;
+  width: 95%;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
+
+.textBackgroundPicker{
   /* height: 200px; */
   /* margin-bottom: 100px; */
   left: 6%;
   position: absolute;
-  top: 2%;
+  top: 7%;
+  
 }
 
-.fontColorPicker {
-  margin-bottom: 100px;
-  position: absolute;
-  left: 6%;
-  top: 250px;
+.fontColorPicker{
+
+  left:6%;
+ position: absolute;
+ top: 7%;
 }
 
-.fontModal {
-  height: 80%;
+.fontModal{
+  height: 60%;
   width: 12%;
-  background: rgba(255, 255, 255, 0.667);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(5.5px);
-  -webkit-backdrop-filter: blur(5.5px);
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
   border-radius: 10px;
-  justify-content: center;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  justify-content: center ;
   align-items: center;
   margin-bottom: 30px;
   position: absolute;
@@ -259,39 +378,91 @@
 
   object-fit: cover;
 }
-
-.fontsmall {
-  font-size: 50px;
+.fontbuttons{
+  height: 10%;
+  width: 100%;
+  /* border: 1px red solid; */
+  top: 85%;
   position: absolute;
-  top: 90%;
-  border: none;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
 }
-.fontbig {
-  font-size: 50px;
-  position: absolute;
-  top: 90%;
+.fontsmall{
+  height: 50px;
+  width: 50px;
+  top: 50px;
+  /* box-shadow:inset 8px 8px 27px rgba( 255, 255, 255, 0 ), */
+            /* inset -8px -8px 27px rgba( 255, 255, 255, 0 ); */
+  background: rgba( 255, 255, 255, 0 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 0px );
+-webkit-backdrop-filter: blur( 0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 2px;
+  cursor: pointer;
+}
+.fontbig{
+  /* font-size: 50px; */
+  /* position: absolute; */
+  /* top:90%;
   border: none;
-  left: 30px;
+  left: 30px; */
 }
 
 .dropdown {
   position: absolute;
-  top: 150px;
-  left: 10px;
-}
-
-.userHead {
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.667);
-  -webkit-text-stroke: 0.1px black;
-  letter-spacing: 2px;
-  position: absolute;
-  left: 40%;
-  bottom: 2.5%;
-}
-.logout {
-  width: 100%;
+  top:180px;
+  left: 5px;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+ outline: none;
+  height: 30px;
+  width: 95%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  
 }
+
+.dropdown:active{
+  position: absolute;
+  top:150px;
+  left: 10px;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  outline: none;
+  height: 30px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.textborder{
+  border: 1px red solid;
+  position: absolute;
+
+
+}
+
+.handle{
+  border: 1px red solid;
+}
+
+
