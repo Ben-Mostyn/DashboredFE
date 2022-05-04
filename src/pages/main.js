@@ -47,6 +47,7 @@ const ScrapBook = ({ user, setUser }) => {
   // ! meme state
   const [meme, setMeme] = useState([""]);
   const [showMeme, setShowMeme] = useState(false);
+  const [showMemeBtn, setShowMemeBtn] = useState(false);
 
   /// color picker
 
@@ -60,12 +61,14 @@ const ScrapBook = ({ user, setUser }) => {
   //!Quote State
   const [advice, setAdvice] = useState("");
   const [showQuote, setShowQuote] = useState(false);
+  const [showQuoteButton, setShowQuoteButton] = useState(false);
 
   //! Advice Function
   let handleFetch = async () => {
     let response = await fetch("https://api.adviceslip.com/advice");
     let data = await response.json();
     setAdvice(data.slip);
+    setShowQuoteButton(true);
   };
 
   //!   creates textbox onclick
@@ -111,6 +114,7 @@ const ScrapBook = ({ user, setUser }) => {
     setMeme(data.data.memes);
     let randomNum = Math.floor(Math.random() * meme.length);
     setMeme(meme[randomNum].url);
+    setShowMemeBtn(true);
   };
 
   // !random meme gen
@@ -329,11 +333,19 @@ const ScrapBook = ({ user, setUser }) => {
               {/* Quote ///////////////////////////////////////////// */}
               {showQuote ? (
                 <Draggable>
-                  <div className="quoteContainer">
-                    <h2 className="quote">{advice.advice}</h2>
-                    <button className="quoteBtn" onClick={handleFetch}>
-                      Randomize
-                    </button>
+                  <div className="quoteContainer draggable12">
+                    <h2 className="quote" placeholder="Pick a Quote">
+                      {advice.advice}
+                    </h2>
+                    {!showQuoteButton ? (
+                      <button className="quoteBtnDefault" onClick={handleFetch}>
+                        Randomize
+                      </button>
+                    ) : (
+                      <button className="quoteBtn" onClick={handleFetch}>
+                        Randomize
+                      </button>
+                    )}
                   </div>
                 </Draggable>
               ) : null}
@@ -342,7 +354,15 @@ const ScrapBook = ({ user, setUser }) => {
                 {!showMeme ? null : (
                   <Draggable>
                     <div>
-                      <button onClick={fetchMeme}>Meme</button>
+                      {!showMemeBtn ? (
+                        <button onClick={fetchMeme} className="quoteBtnDefault">
+                          Randomize
+                        </button>
+                      ) : (
+                        <button className="quoteBtn" onClick={fetchMeme}>
+                          Randomize
+                        </button>
+                      )}
 
                       <img
                         src={meme}

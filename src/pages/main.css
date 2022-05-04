@@ -486,3 +486,14 @@
   -webkit-text-stroke: 0.1px black;
   color: rgba(31, 38, 135, 0.37);
 }
+
+.draggable12 {
+  cursor: grab;
+}
+
+.quoteBtnDefault {
+  color: rgba(6, 6, 6, 1);
+  border: rgba(6, 6, 6, 1) 1px solid;
+  margin: 0;
+  padding: 0.3%;
+}
