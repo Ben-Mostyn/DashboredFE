@@ -239,10 +239,11 @@ const ScrapBook = ({ user, setUser }) => {
                 {" "}
                 <RiEmotionLaughLine size={30} />
               </button>
+              {/* IMAGE BUTTON */}
               <button
                 className="btn1"
                 onClick={() => {
-                  !showImage ? setShowImage(true) : setShowImage(false);
+                  showImage ? setShowImage(false) : setShowImage(true);
                 }}
               >
                 {" "}
@@ -353,7 +354,7 @@ const ScrapBook = ({ user, setUser }) => {
                   </Draggable>
                 )}
               </div>{" "}
-              {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}
+              {/* ! ImageLoaderrrrr//////////////////////////////////////////////////// */}
               <div>
                 {showImage ? (
                   <ImageHandle
