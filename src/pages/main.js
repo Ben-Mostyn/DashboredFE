@@ -2,6 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
+import Star from "./Shapes/Star.png";
+import circle from "../pages/Shapes/circle.png";
+import moon from "../pages/Shapes/CrescentMoon.png";
+import { Star1, Circle, Moon } from "../components/Shapes";
 
 // ! COMPONENTS
 import Clock from "../components/clock";
@@ -63,6 +67,24 @@ const ScrapBook = ({ user, setUser }) => {
   const [showQuote, setShowQuote] = useState(false);
   const [showQuoteButton, setShowQuoteButton] = useState(false);
 
+  //!Shape Model State
+  const [shapeModal, setShapeModal] = useState(false);
+
+  //!Shape States
+  const [star, setStar] = useState();
+  const [starArr, setStarArr] = useState([]);
+  const [showStar, setShowStar] = useState(false);
+
+  //!Circle States
+  const [circle, setCircle] = useState();
+  const [circleArr, setCircleArr] = useState([]);
+  const [showCircle, setShowCircle] = useState(false);
+
+  //!Crescent Moon Shapes
+  const [moon, setMoon] = useState();
+  const [moonArr, setMoonArr] = useState([]);
+  const [showMoon, setShowMoon] = useState(false);
+
   //! Advice Function
   let handleFetch = async () => {
     let response = await fetch("https://api.adviceslip.com/advice");
@@ -78,6 +100,26 @@ const ScrapBook = ({ user, setUser }) => {
     setTextInput();
   };
 
+  //! Creates Star PNG
+  const createStar = () => {
+    setShowStar(true);
+    setStarArr([...starArr, setStar({ Star })]);
+    setStar();
+  };
+
+  //!Creates Circle PNG
+  const createCircle = () => {
+    setShowCircle(true);
+    setCircleArr([...circleArr, setCircle({ circle })]);
+    setCircle();
+  };
+
+  //!Creates Moon PNG
+  const createMoon = () => {
+    setShowMoon(true);
+    setMoonArr([...moonArr, setMoon({ moon })]);
+    setMoon();
+  };
   //   !deletes targeted textbox
   const removeHandler = (index, i) => {
     let storedArr = [...textArea];
@@ -126,6 +168,11 @@ const ScrapBook = ({ user, setUser }) => {
     setFontValue(selectedValue);
 
     console.log(selectedValue, "selectedValue");
+  };
+
+  //! Shape Modal
+  const ShapeModal = () => {
+    setShapeModal(true);
   };
 
   useEffect(() => {
@@ -263,7 +310,12 @@ const ScrapBook = ({ user, setUser }) => {
                 <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
-                <HiMusicNote size={30} />
+                <HiMusicNote
+                  onClick={() => {
+                    !shapeModal ? setShapeModal(true) : setShapeModal(false);
+                  }}
+                  size={30}
+                />
               </div>
             </div>
 
@@ -277,11 +329,16 @@ const ScrapBook = ({ user, setUser }) => {
               {" "}
               <BiLogOut size={30} />
             </button>
-
-            {/* <MemeGenerator /> */}
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
+            {shapeModal ? (
+              <div className="shapeModal1">
+                <button onClick={createStar}>Star</button>
+                <button onClick={createCircle}>Circle</button>
+                <button onClick={createMoon}>Moon</button>
+              </div>
+            ) : null}
 
             <div className="mainPlayArea">
               {/* Text Box return ///////////////////////////////////////////////////////// */}
@@ -331,6 +388,25 @@ const ScrapBook = ({ user, setUser }) => {
                   })}
                 </div>
               ) : null}
+              {/* /////////////////////////////////////////////////////////////////////////////// */}
+              <Star1
+                star={star}
+                setStar={setStar}
+                starArr={starArr}
+                setStarArr={setStarArr}
+              />
+              <Circle
+                circle={circle}
+                setCircle={setCircle}
+                circleArr={circleArr}
+                setCircleArr={setCircleArr}
+              />
+              <Moon
+                moon={moon}
+                setMoon={setMoon}
+                moonArr={moonArr}
+                setMoonArr={setMoonArr}
+              />
               {/* Quote ///////////////////////////////////////////// */}
               {showQuote ? (
                 <Draggable>
