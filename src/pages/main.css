@@ -374,7 +374,38 @@
   object-fit: cover;
 }
 /* !IMAGE MODAL */
+.preview {
+  border-radius: 15%;
+}
+.previewBox {
+  /* border: 2px solid green; */
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.imageInput {
+  /* border: 2px solid blue; */
+  height: 20%;
+  width: 45%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagePreview {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+  width: 90%;
+}
 .imageModal {
+  display: flex;
   height: 60%;
   width: 20%;
   background: rgba(255, 255, 255, 0.15);
