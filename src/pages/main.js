@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
 
@@ -30,7 +30,6 @@ const ScrapBook = ({ user, setUser }) => {
 
   // !image state
   const [image, setImage] = useState();
-  const [imageUrl, setImageUrl] = useState([]);
   const [showImage, setShowImage] = useState(false);
   const [uploadedImages, setUploadedImages] = useState([]);
 
@@ -124,6 +123,29 @@ const ScrapBook = ({ user, setUser }) => {
 
     console.log(selectedValue, "selectedValue");
   };
+
+  useEffect(() => {
+    const getImages = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_REST_API}getImages`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: user,
+          }),
+        }
+      );
+      const json = await response.json();
+      const { image: images } = json;
+      setUploadedImages(images);
+      console.log(uploadedImages, "i am uploaded images");
+    };
+    getImages();
+  });
 
   return (
     <div>
@@ -305,13 +327,14 @@ const ScrapBook = ({ user, setUser }) => {
                     user={user}
                     image={image}
                     setImage={setImage}
-                    imageUrl={imageUrl}
-                    setImageUrl={setImageUrl}
                     uploadedImages={uploadedImages}
                     setUploadedImages={setUploadedImages}
                   />
                 ) : null}
               </div>
+              {uploadedImages.map((imageUrl, index) => (
+                <img alt="uploaded" key={index} src={imageUrl} />
+              ))}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">

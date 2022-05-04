@@ -3,15 +3,9 @@ import Alert from "./Alerts";
 import React, { useEffect, useState } from "react";
 import { Image } from "cloudinary-react";
 
-export default function ImageHandle({
-  user,
-  image,
-  setImage,
-  setImageUrl,
-  imageUrl,
-  uploadedImages,
-  setUploadedImages,
-}) {
+export default function ImageHandle() {
+  const [imageArray, setImageArray] = useState([]);
+
   // !UPLOAD
   const uploadImage = async (image) => {
     try {
@@ -25,16 +19,19 @@ export default function ImageHandle({
           body: formData,
         }
       );
-      const data = await response.json();
-      const res = await fetch(`${process.env.REACT_APP_REST_API}addImage`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+      const { secure_url } = await response.json();
+
+      await fetch(`${process.env.REACT_APP_REST_API}addImage`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          image: data.secure_url,
-          user: user,
+          image: secure_url,
         }),
       });
-      return data.secure_url;
+      return secure_url;
     } catch (error) {
       console.error(error);
     }
@@ -43,69 +40,55 @@ export default function ImageHandle({
   const showPreview = async (event) => {
     if (event.target.files.length > 0) {
       const url = await uploadImage(event.target.files[0]);
-      setImage(url);
-
-      console.log(image, "i am image");
-
-      // push image into array
-      const imageArr = [image];
-      imageArr.push(image);
-      setImageUrl(imageArr);
-      console.log(imageUrl, "i am imageUrl");
+      setImageArray([...imageArray, url]);
     }
   };
 
-  // ! image gallery fetch
-  useEffect(() => {
-    const getImages = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_REST_API}getImages`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const json = await response.json();
-      const { image: images } = json;
-      setUploadedImages(images);
-      console.log(uploadedImages);
-    };
-    getImages();
-  });
+  const updateImage = async (image) => {
+    try {
+      await fetch(`${image}/updateImage`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("myToken")}`, //this maybe different for you?
+        },
+        body: JSON.stringify(image),
+      });
+      return image;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <Draggable>
-      <div className="">
-        <img
-          className=""
-          src={image}
-          id="upload-preview"
-          alt="image"
-          style={{ width: 200, height: 200 }}
+    <div className="">
+      {/* <h1>Cloudinary</h1> */}
+
+      <img
+        className=""
+        src={[...imageArray].pop()}
+        id="upload-preview"
+        alt="preview"
+        style={{ width: 200, height: 200 }}
+      />
+      <button>
+        {/* <span>Upload Image and preview</span> */}
+        <input
+          type="file"
+          onChange={(event) => {
+            showPreview(event);
+          }}
         />
-        <button>
-          <input
-            type="file"
-            onChange={(event) => {
-              showPreview(event);
-            }}
-          />
-        </button>
-        <h2>uploaded images from Cloudinary</h2>
-        {uploadedImages.map((imageUrl, index) => (
-          <img alt="uploaded" key={index} src={imageUrl} />
-        ))}
+      </button>
 
-        {/* <h1>image url</h1>
+      {/* <h1>image url</h1> */}
 
-      {imageUrl ? (
+      {updateImage ? (
         <div>
-          {imageUrl.map((imageUrl, index) => {
+          {imageArray.map((imageUrl, index) => {
             return (
               <img
+                alt="uploaded images"
                 src={imageUrl}
                 style={{ width: 200, height: 200 }}
                 key={index}
@@ -113,8 +96,10 @@ export default function ImageHandle({
             );
           })}
         </div>
-      ) : null} */}
-      </div>
-    </Draggable>
+      ) : null}
+
+      {/* <span>image url</span>
+      <button onClick={updateImage}>image url</button> */}
+    </div>
   );
 }
