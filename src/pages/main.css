@@ -1,37 +1,32 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-
-
-
-.main{
+.main {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(-45deg, #e9ad9a, #ecafc6, #b4e1f1, #adf0e0);
-	background-size: 400% 400%;
-	animation: gradient 35s ease infinite;
-	
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+
   /* border: 1px red solid; */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
- 
- 
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
@@ -58,54 +53,48 @@ flex-direction: column;
 
 }
 
-.half1{
+.half1 {
   height: 400px;
   width: 100%;
   /* border: red solid 2px; */
   display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-position: absolute;
-bottom: 135px;
-object-fit: contain;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 135px;
+  object-fit: contain;
 }
 
-.btn1{
+.btn1 {
   height: 50px;
   width: 50px;
   /* box-shadow:inset 8px 8px 27px rgba( 255, 255, 255, 0 ), */
-            /* inset -8px -8px 27px rgba( 255, 255, 255, 0 ); */
-  background: rgba( 255, 255, 255, 0 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 0px );
--webkit-backdrop-filter: blur( 0px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+  /* inset -8px -8px 27px rgba( 255, 255, 255, 0 ); */
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 30px;
   margin: 2px;
   cursor: pointer;
-  
 }
 
 /* #icon1{
   
 } */
 
-
-
-.btn1:hover{
-
+.btn1:hover {
   /* transition: 1s ease-in-out smooth; */
   transform: scale(1.05);
 
-animation: shuffle 3s  infinite linear;   
-            
-
+  animation: shuffle 3s infinite linear;
 }
 
 .btn2{
@@ -131,91 +120,81 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 @keyframes shuffle {
-
-  0%{
+  0% {
     transform: scale(1.05);
   }
 
-  30% {transform: scale(1.05);
-		transform: rotate(5deg);
-	}
-	60% {transform: scale(1.05);
-		transform: rotate(-15deg);
+  30% {
+    transform: scale(1.05);
+    transform: rotate(5deg);
+  }
+  60% {
+    transform: scale(1.05);
+    transform: rotate(-15deg);
+  }
+
+  100% {
+    transform: scale(1.05);
+  }
 }
 
-100%{
-  transform: scale(1.05);
-}
-}
-
-
-.half2{
+.half2 {
   height: 10%;
   width: 100%;
- 
+
   /* border: 1px black solid; */
   position: absolute;
- /* border: rgba( 255, 255, 255, 1 ); */
- background: rgba( 255, 255, 255, 0.25 );
- box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
- backdrop-filter: blur( 5.5px );
- -webkit-backdrop-filter: blur( 5.5px );
+  /* border: rgba( 255, 255, 255, 1 ); */
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
   border-radius: 10px;
   display: flex;
-justify-content: center;
-align-items: flex-start;
-
+  justify-content: center;
+  align-items: flex-start;
 }
-.half3{
+.half3 {
   height: 12%;
   width: 100%;
 
   /* border: rgb(34, 0, 128) solid 1px; */
-position: absolute;
-bottom: 100px;
-background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 5.5px );
--webkit-backdrop-filter: blur( 5.5px );
-border-radius: 10px;
-
-
+  position: absolute;
+  bottom: 100px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 10px;
 }
 
+.circle {
+  position: absolute;
+  height: 50px;
+  width: 40%;
+  border-radius: 50%;
+  top: -15px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
 
-.circle{
-position: absolute;
-height: 50px;
-width: 40%;
-border-radius: 50%;
-top: -15px;
-background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 5.5px );
--webkit-backdrop-filter: blur( 5.5px );
-
-
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.circle1{
+.circle1 {
+  height: 40px;
+  width: 80%;
+  border-radius: 50%;
 
-  
-height: 40px;
-width: 80%;
-border-radius: 50%;
-
-border-radius: 50%;
-border-radius: 50%;
-/* background: linear-gradient(315deg, #f0f0f0, #cacaca); */
-/* box-shadow:  -5px -5px 10px #bebebe,
+  border-radius: 50%;
+  border-radius: 50%;
+  /* background: linear-gradient(315deg, #f0f0f0, #cacaca); */
+  /* box-shadow:  -5px -5px 10px #bebebe,
              5px 5px 10px #ffffff; */
-/* border: 3px black solid; */
-
-
-
+  /* border: 3px black solid; */
 }
 
 .playArea {
@@ -224,11 +203,11 @@ border-radius: 50%;
   /* border: 2px solid red; */
   position: absolute;
   /* left: 20%; */
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 5.5px );
-  -webkit-backdrop-filter: blur( 5.5px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .textbox {
@@ -241,33 +220,33 @@ border-radius: 50%;
   border: purple 1px solid;
 }
 
-.nav1{
+.nav1 {
   border: red 1px solid;
   width: 200px;
   height: 100%;
 }
 
-.mainPlayArea{
+.mainPlayArea {
   height: 80%;
   width: 65%;
   /* border: 2px solid red; */
   position: absolute;
   left: 15%;
-  top:10%;
+  top: 10%;
   right: 0%;
   bottom: 0%;
   background: rgba(255, 255, 255, 0.667);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 5.5px );
-  -webkit-backdrop-filter: blur( 5.5px );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
   border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
   overflow-x: hidden;
   overflow-y: hidden;
   padding: 10px;
 }
 
-.todolist{
+.todolist {
   overflow: auto;
   position: relative;
   overflow-y: auto;
@@ -368,7 +347,7 @@ align-items: flex-end;
 .textBackgroundPicker{
   /* height: 200px; */
   /* margin-bottom: 100px; */
-  left:6%;
+  left: 6%;
   position: absolute;
   top: 7%;
   
@@ -394,8 +373,8 @@ align-items: flex-end;
   align-items: center;
   margin-bottom: 30px;
   position: absolute;
-  left:83%;
-  top:85px;
+  left: 83%;
+  top: 85px;
 
   object-fit: cover;
 }
@@ -436,7 +415,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   left: 30px; */
 }
 
-.dropdown{
+.dropdown {
   position: absolute;
   top:180px;
   left: 5px;
