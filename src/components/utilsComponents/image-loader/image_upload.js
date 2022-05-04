@@ -9,6 +9,8 @@ export default function ImageHandle({
   setImage,
   setImageUrl,
   imageUrl,
+  uploadedImages,
+  setUploadedImages,
 }) {
   // !UPLOAD
   const uploadImage = async (image) => {
@@ -53,6 +55,27 @@ export default function ImageHandle({
     }
   };
 
+  // ! image gallery fetch
+  useEffect(() => {
+    const getImages = async () => {
+      const response = await fetch(
+        `${process.env.REACT_APP_REST_API}getImages`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const json = await response.json();
+      const { image: images } = json;
+      setUploadedImages(images);
+      console.log(UploadedImages);
+    };
+    getImages();
+  });
+
   return (
     <Draggable>
       <div className="">
@@ -71,6 +94,10 @@ export default function ImageHandle({
             }}
           />
         </button>
+        <h2>uploaded images from Cloudinary</h2>
+        {uploadedImages.map((imageUrl, index) => (
+          <img alt="uploaded" key={index} src={imageUrl} />
+        ))}
 
         {/* <h1>image url</h1>
 

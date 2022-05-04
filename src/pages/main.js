@@ -38,6 +38,7 @@ const ScrapBook = ({ user, setUser }) => {
   const [image, setImage] = useState();
   const [imageUrl, setImageUrl] = useState([]);
   const [showImage, setShowImage] = useState(false);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
   // ! textbox states
   const [showBtn, setShowBtn] = useState(false);
@@ -333,6 +334,8 @@ const ScrapBook = ({ user, setUser }) => {
                     setImage={setImage}
                     imageUrl={imageUrl}
                     setImageUrl={setImageUrl}
+                    uploadedImages={uploadedImages}
+                    setUploadedImages={setUploadedImages}
                   />
                 ) : null}
               </div>
