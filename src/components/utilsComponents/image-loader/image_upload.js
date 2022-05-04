@@ -61,45 +61,47 @@ export default function ImageHandle() {
   };
 
   return (
-    <div className="">
-      {/* <h1>Cloudinary</h1> */}
+    <div>
+      <div className="imageModal">
+        {/* <h1>Cloudinary</h1> */}
 
-      <img
-        className=""
-        src={[...imageArray].pop()}
-        id="upload-preview"
-        alt="preview"
-        style={{ width: 200, height: 200 }}
-      />
-      <button>
-        {/* <span>Upload Image and preview</span> */}
-        <input
-          type="file"
-          onChange={(event) => {
-            showPreview(event);
-          }}
+        <img
+          className=""
+          src={[...imageArray].pop()}
+          id="upload-preview"
+          alt="preview"
+          style={{ width: 100, height: 100 }}
         />
-      </button>
-
+        <button>
+          {/* <span>Upload Image and preview</span> */}
+          <input
+            type="file"
+            onChange={(event) => {
+              showPreview(event);
+            }}
+          />
+        </button>
+      </div>
       {/* <h1>image url</h1> */}
+      <div>
+        {updateImage ? (
+          <div>
+            {imageArray.map((imageUrl, index) => {
+              return (
+                <img
+                  alt="uploaded images"
+                  src={imageUrl}
+                  style={{ width: 200, height: 200 }}
+                  key={index}
+                />
+              );
+            })}
+          </div>
+        ) : null}
 
-      {updateImage ? (
-        <div>
-          {imageArray.map((imageUrl, index) => {
-            return (
-              <img
-                alt="uploaded images"
-                src={imageUrl}
-                style={{ width: 200, height: 200 }}
-                key={index}
-              />
-            );
-          })}
-        </div>
-      ) : null}
-
-      {/* <span>image url</span>
+        {/* <span>image url</span>
       <button onClick={updateImage}>image url</button> */}
+      </div>
     </div>
   );
 }
