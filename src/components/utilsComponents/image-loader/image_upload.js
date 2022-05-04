@@ -61,28 +61,30 @@ export default function ImageHandle() {
   };
 
   return (
-    <div>
-      <div className="imageModal">
-        {/* <h1>Cloudinary</h1> */}
-
-        <img
-          className=""
-          src={[...imageArray].pop()}
-          id="upload-preview"
-          alt="preview"
-          style={{ width: 100, height: 100 }}
-        />
-        <button>
-          {/* <span>Upload Image and preview</span> */}
-          <input
-            type="file"
-            onChange={(event) => {
-              showPreview(event);
-            }}
-          />
-        </button>
-      </div>
-      {/* <h1>image url</h1> */}
+    <div className="">
+      <Draggable>
+        <div className="imageModal">
+          <div className="imagePreview">
+            <div className="previewBox">
+              <img
+                className="preview"
+                src={[...imageArray].pop()}
+                id="upload-preview"
+                alt="preview"
+                style={{ width: 100, height: 100 }}
+              />
+            </div>
+            <div className="imageInput">
+              <input
+                type="file"
+                onChange={(event) => {
+                  showPreview(event);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </Draggable>
       <div>
         {updateImage ? (
           <div>
@@ -98,9 +100,6 @@ export default function ImageHandle() {
             })}
           </div>
         ) : null}
-
-        {/* <span>image url</span>
-      <button onClick={updateImage}>image url</button> */}
       </div>
     </div>
   );
