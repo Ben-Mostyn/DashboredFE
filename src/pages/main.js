@@ -494,6 +494,7 @@ const ScrapBook = ({ user, setUser }) => {
                       )}
 
                       <img
+                      className="memeimg"
                         src={meme}
                         style={{ height: 200, width: 200 }}
                         alt="meme"
@@ -522,7 +523,7 @@ const ScrapBook = ({ user, setUser }) => {
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
-                    <h1 className="todoh1g">To do list</h1>
+                    <h1 className="todoh1g">To Do List</h1>
                     <input
                       className="todo-input"
                       value={currentTodo}
