@@ -22,6 +22,9 @@ import { RiTodoLine } from "react-icons/ri";
 import { RiEmotionLaughLine } from "react-icons/ri";
 import { BsChatRightQuote } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import { AiFillStar } from "react-icons/ai";
+import { FaRegCircle } from "react-icons/fa";
+import { BsFillMoonFill } from "react-icons/bs";
 
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
@@ -333,10 +336,45 @@ const ScrapBook = ({ user, setUser }) => {
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
             {shapeModal ? (
-              <div className="shapeModal1">
-                <button onClick={createStar}>Star</button>
-                <button onClick={createCircle}>Circle</button>
-                <button onClick={createMoon}>Moon</button>
+              <div className="containShapeModal">
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createStar}>
+                    <AiFillStar
+                      size={30}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                  <button className="ShapeModalBtn" onClick={createCircle}>
+                    <FaRegCircle
+                      size={30}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                  <button className="ShapeModalBtn" onClick={createMoon}>
+                    <BsFillMoonFill
+                      size={30}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
               </div>
             ) : null}
 
