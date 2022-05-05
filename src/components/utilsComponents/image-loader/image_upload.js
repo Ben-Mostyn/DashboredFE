@@ -66,6 +66,8 @@ export default function ImageHandle() {
         <div className="imageModal">
           <div className="imagePreview">
             <div className="previewBox">
+              <h2>Image Preview</h2>
+
               <img
                 className="preview"
                 src={[...imageArray].pop()}
@@ -74,8 +76,9 @@ export default function ImageHandle() {
                 style={{ width: 100, height: 100 }}
               />
             </div>
-            <div className="imageInput">
+            <div className="imageInputContainer">
               <input
+                className="imageInput"
                 type="file"
                 onChange={(event) => {
                   showPreview(event);
