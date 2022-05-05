@@ -15,7 +15,7 @@
     align-items: center;
     min-height: 100vh;
     perspective: 1000px;
-    background-image: url(/src/imgs/hip-square.webp);
+    /* background-image: url(/src/imgs/hip-square.webp); */
     background-size: 60rem;
     background-repeat: repeat 0 0;
     animation: infiniteMove linear  infinite 3000ms;
