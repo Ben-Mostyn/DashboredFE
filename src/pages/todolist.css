@@ -1,10 +1,19 @@
 
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+.todolist{
+  
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
 
 
-
-
-h1{
-font-size: 50px;
+.todoh1{
+font-size: 20px;
+padding-left: 30%;
+font-family: 'Indie Flower';
 }
 
 
@@ -15,14 +24,29 @@ font-size: 50px;
 }
 
 .todo-input {
-  font-size: 40px;
-  border-style: solid;
+  font-size: 15px;
+  /* border-style: solid; */
   display: flex;
   align-items: center;
+  appearance: none;
+  outline: none;
+  -webkit-appearance: none;
+ border: none;
+  background: none;
+  font-family: 'Indie Flower';
+
 }
 
 .todo-input:focus {
   outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: none;
+  font-family: 'Indie Flower';
+  
+ 
+  
 }
 
 .done {
@@ -39,10 +63,11 @@ font-size: 50px;
 } */
 
 .checkbox {
+  position: absolute;
   width: 24px;
   height: 24px;
-  border-radius: 50%;
-  margin-right: 10px;
+  border-radius: 10%;
+ right:2%;
   cursor: pointer;
   background: aliceblue;
   font-size: 10px;
@@ -60,7 +85,7 @@ font-size: 50px;
 
 .delete {
   margin-left: auto;
-  font-size: 20px;
+  font-size: 10px;
   cursor: pointer;
 }
 
@@ -73,4 +98,7 @@ position: fixed;
 top: 10px;
 right: 10%;
 color: rgb(81, 69, 124)!important; 
+}
+#todo{
+  font-family: 'Indie Flower';
 }

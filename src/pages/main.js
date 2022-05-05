@@ -468,10 +468,12 @@ const ScrapBook = ({ user, setUser }) => {
               {uploadedImages.map((imageUrl, index) => (
                 <img alt="uploaded" key={index} src={imageUrl} />
               ))}
+
+              {/* to do list */}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
-                    <h1>ToDo List!</h1>
+                    <h1 className="todoh1g">To do list</h1>
                     <input
                       className="todo-input"
                       value={currentTodo}
@@ -484,7 +486,7 @@ const ScrapBook = ({ user, setUser }) => {
                           setCurrentTodo(" ");
                         }
                       }}
-                      placeholder="What do you need ToDo?"
+                      placeholder="Things i need to do....."
                     />
 
                     {todos.map((todo, index) => (
@@ -495,7 +497,7 @@ const ScrapBook = ({ user, setUser }) => {
                         >
                           {todo.isCompleted && <span>&#x2714;</span>}
                         </div>
-                        <div className={todo.isCompleted ? "done" : " "}>
+                        <div className={todo.isCompleted ? "done" : " "} id="todo">
                           {" "}
                           {todo.todo}
                         </div>
