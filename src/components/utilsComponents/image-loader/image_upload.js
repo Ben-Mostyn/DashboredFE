@@ -62,44 +62,45 @@ export default function ImageHandle() {
 
   return (
     <div className="">
-      {/* <h1>Cloudinary</h1> */}
-
-      <img
-        className=""
-        src={[...imageArray].pop()}
-        id="upload-preview"
-        alt="preview"
-        style={{ width: 200, height: 200 }}
-      />
-      <button>
-        {/* <span>Upload Image and preview</span> */}
-        <input
-          type="file"
-          onChange={(event) => {
-            showPreview(event);
-          }}
-        />
-      </button>
-
-      {/* <h1>image url</h1> */}
-
-      {updateImage ? (
-        <div>
-          {imageArray.map((imageUrl, index) => {
-            return (
+      <Draggable>
+        <div className="imageModal">
+          <div className="imagePreview">
+            <div className="previewBox">
               <img
-                alt="uploaded images"
-                src={imageUrl}
-                style={{ width: 200, height: 200 }}
-                key={index}
+                className="preview"
+                src={[...imageArray].pop()}
+                id="upload-preview"
+                alt="preview"
+                style={{ width: 100, height: 100 }}
               />
-            );
-          })}
+            </div>
+            <div className="imageInput">
+              <input
+                type="file"
+                onChange={(event) => {
+                  showPreview(event);
+                }}
+              />
+            </div>
+          </div>
         </div>
-      ) : null}
-
-      {/* <span>image url</span>
-      <button onClick={updateImage}>image url</button> */}
+      </Draggable>
+      <div>
+        {updateImage ? (
+          <div>
+            {imageArray.map((imageUrl, index) => {
+              return (
+                <img
+                  alt="uploaded images"
+                  src={imageUrl}
+                  style={{ width: 200, height: 200 }}
+                  key={index}
+                />
+              );
+            })}
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

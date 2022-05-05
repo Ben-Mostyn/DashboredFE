@@ -3,6 +3,11 @@ import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
 import {AiFillEdit} from "react-icons/ai"
+import Star from "./Shapes/Star.png";
+import circle from "../pages/Shapes/circle.png";
+import moon from "../pages/Shapes/CrescentMoon.png";
+import { Star1, Circle, Moon } from "../components/Shapes";
+
 // ! COMPONENTS
 import Clock from "../components/clock";
 // import MemeGenerator from "../components/utilsComponents/memeApi";
@@ -18,7 +23,8 @@ import { RiTodoLine } from "react-icons/ri";
 import { RiEmotionLaughLine } from "react-icons/ri";
 import { BsChatRightQuote } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
-
+import {BiMove} from "react-icons/bi"
+import "./todolist.css"
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
@@ -47,6 +53,7 @@ const ScrapBook = ({ user, setUser }) => {
   // ! meme state
   const [meme, setMeme] = useState([""]);
   const [showMeme, setShowMeme] = useState(false);
+  const [showMemeBtn, setShowMemeBtn] = useState(false);
 
   /// color picker
 
@@ -60,12 +67,32 @@ const ScrapBook = ({ user, setUser }) => {
   //!Quote State
   const [advice, setAdvice] = useState("");
   const [showQuote, setShowQuote] = useState(false);
+  const [showQuoteButton, setShowQuoteButton] = useState(false);
+
+  //!Shape Model State
+  const [shapeModal, setShapeModal] = useState(false);
+
+  //!Shape States
+  const [star, setStar] = useState();
+  const [starArr, setStarArr] = useState([]);
+  const [showStar, setShowStar] = useState(false);
+
+  //!Circle States
+  const [circle, setCircle] = useState();
+  const [circleArr, setCircleArr] = useState([]);
+  const [showCircle, setShowCircle] = useState(false);
+
+  //!Crescent Moon Shapes
+  const [moon, setMoon] = useState();
+  const [moonArr, setMoonArr] = useState([]);
+  const [showMoon, setShowMoon] = useState(false);
 
   //! Advice Function
   let handleFetch = async () => {
     let response = await fetch("https://api.adviceslip.com/advice");
     let data = await response.json();
     setAdvice(data.slip);
+    setShowQuoteButton(true);
   };
 
   //!   creates textbox onclick
@@ -75,6 +102,26 @@ const ScrapBook = ({ user, setUser }) => {
     setTextInput();
   };
 
+  //! Creates Star PNG
+  const createStar = () => {
+    setShowStar(true);
+    setStarArr([...starArr, setStar({ Star })]);
+    setStar();
+  };
+
+  //!Creates Circle PNG
+  const createCircle = () => {
+    setShowCircle(true);
+    setCircleArr([...circleArr, setCircle({ circle })]);
+    setCircle();
+  };
+
+  //!Creates Moon PNG
+  const createMoon = () => {
+    setShowMoon(true);
+    setMoonArr([...moonArr, setMoon({ moon })]);
+    setMoon();
+  };
   //   !deletes targeted textbox
   const removeHandler = (index, i) => {
     let storedArr = [...textArea];
@@ -111,6 +158,7 @@ const ScrapBook = ({ user, setUser }) => {
     setMeme(data.data.memes);
     let randomNum = Math.floor(Math.random() * meme.length);
     setMeme(meme[randomNum].url);
+    setShowMemeBtn(true);
   };
 
   // !random meme gen
@@ -122,6 +170,11 @@ const ScrapBook = ({ user, setUser }) => {
     setFontValue(selectedValue);
 
     console.log(selectedValue, "selectedValue");
+  };
+
+  //! Shape Modal
+  const ShapeModal = () => {
+    setShapeModal(true);
   };
 
   useEffect(() => {
@@ -151,41 +204,74 @@ const ScrapBook = ({ user, setUser }) => {
     <div>
       <div className="main">
         <div className="playArea">
-                  
-      {!visible ? null :  (
-        <div className="fontModal">
-         <div className="background">
-           <h1 className="bgh1">Background</h1>
-         </div>
-         <div className="fontpickerdiv">
-        <CirclePicker className="textBackgroundPicker"color={color}   onChangeComplete={ (color) => {setColor(color.hex)}} circleSize={12} width={180}/>
-        </div>
-        <div className="background1">
-           <h1 className="bgh1">Font-Color</h1>
-         </div>
-        <div className="fontpickerdiv1">
-         <CirclePicker className="fontColorPicker" color={colorFont}  onChangeComplete={ (colorFont) => {setColorFont(colorFont.hex)}} circleSize={12} width={180}/>
-         {/* <button fontFamily={fontFamily} onClick={() => {setFontFamily("Arial")}}> Arial</button> */}
-        </div>
-        <div className="background3">
-           <h1 className="bgh1">Font-style</h1>
-         </div>
-         <select className="dropdown" id="list"    onChange={fontPicker}>
-           <option value="Times New Roman"  id="timesnew">Times New Roman</option>
-           <option value="Arial">Arial</option>
-           <option value="Gill Sans">Gil Sans</option>
-           <option value="Trebuchet MS">Trebuchet MS</option>
-           {/* <option value="">Times New roman</option> */}
-         </select>
-         <div className="background2">
-           <h1 className="bgh1">Font-Size</h1>
-         </div>
-         <div className="fontbuttons">
-         <button className="btn1" id="fontbig" onClick={() => {setFontSize (fontSize + 2)}}>+</button>
-          <button className="btn1" id="fontsmall" onClick={() => {setFontSize (fontSize - 2)}}>-</button>
-          </div>
-          </div>
-          ) }
+          {!visible ? null : (
+            <div className="fontModal">
+              <div className="background">
+                <h1 className="bgh1">Background</h1>
+              </div>
+              <div className="fontpickerdiv">
+                <CirclePicker
+                  className="textBackgroundPicker"
+                  color={color}
+                  onChangeComplete={(color) => {
+                    setColor(color.hex);
+                  }}
+                  circleSize={12}
+                  width={180}
+                />
+              </div>
+              <div className="background1">
+                <h1 className="bgh1">Font-Color</h1>
+              </div>
+              <div className="fontpickerdiv1">
+                <CirclePicker
+                  className="fontColorPicker"
+                  color={colorFont}
+                  onChangeComplete={(colorFont) => {
+                    setColorFont(colorFont.hex);
+                  }}
+                  circleSize={12}
+                  width={180}
+                />
+                {/* <button fontFamily={fontFamily} onClick={() => {setFontFamily("Arial")}}> Arial</button> */}
+              </div>
+              <div className="background3">
+                <h1 className="bgh1">Font-style</h1>
+              </div>
+              <select className="dropdown" id="list" onChange={fontPicker}>
+                <option value="Times New Roman" id="timesnew">
+                  Times New Roman
+                </option>
+                <option value="Arial">Arial</option>
+                <option value="Gill Sans">Gil Sans</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                {/* <option value="">Times New roman</option> */}
+              </select>
+              <div className="background2">
+                <h1 className="bgh1">Font-Size</h1>
+              </div>
+              <div className="fontbuttons">
+                <button
+                  className="btn1"
+                  id="fontbig"
+                  onClick={() => {
+                    setFontSize(fontSize + 2);
+                  }}
+                >
+                  +
+                </button>
+                <button
+                  className="btn1"
+                  id="fontsmall"
+                  onClick={() => {
+                    setFontSize(fontSize - 2);
+                  }}
+                >
+                  -
+                </button>
+              </div>
+            </div>
+          )}
           <Clock />
           <div className="nav">
             <div className="half1">
@@ -206,10 +292,11 @@ const ScrapBook = ({ user, setUser }) => {
                 {" "}
                 <RiEmotionLaughLine size={30} />
               </button>
+              {/* IMAGE BUTTON */}
               <button
                 className="btn1"
                 onClick={() => {
-                  !showImage ? setShowImage(true) : setShowImage(false);
+                  showImage ? setShowImage(false) : setShowImage(true);
                 }}
               >
                 {" "}
@@ -225,25 +312,35 @@ const ScrapBook = ({ user, setUser }) => {
                 <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
-                <HiMusicNote size={30} />
+                <HiMusicNote
+                  onClick={() => {
+                    !shapeModal ? setShapeModal(true) : setShapeModal(false);
+                  }}
+                  size={30}
+                />
               </div>
             </div>
 
-            <button className= "btn2"
+            <button
+              className="btn2"
               onClick={() => {
                 setUser();
                 localStorage.clear();
               }}
             >
-             {" "}
-             <BiLogOut size={30} />
+              {" "}
+              <BiLogOut size={30} />
             </button>
-
-
-            {/* <MemeGenerator /> */}
           </div>
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
+            {shapeModal ? (
+              <div className="shapeModal1">
+                <button onClick={createStar}>Star</button>
+                <button onClick={createCircle}>Circle</button>
+                <button onClick={createMoon}>Moon</button>
+              </div>
+            ) : null}
 
             <div className="mainPlayArea">
               {/* Text Box return ///////////////////////////////////////////////////////// */}
@@ -253,14 +350,15 @@ const ScrapBook = ({ user, setUser }) => {
                     return (
                       <Draggable handle=".handle">
                         <div className="textborder">
-                          <button onClick={removeHandler}  style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}id="x">
+                          <button onClick={removeHandler} className="closeicon"  id="x">
                             <AiOutlineCloseCircle />
                           </button>
-                          <div className="handle">Grab me</div>
+                          <div className="handle"><BiMove/></div>
                           <button style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}
                             onClick={() => {
                               visible ? setVisible(false) : setVisible(true);
                             }}
+                            className="editicon"
                           >
                             {" "}
                             <AiFillEdit/>
@@ -286,8 +384,6 @@ const ScrapBook = ({ user, setUser }) => {
 
                             //  onMouseOver={hover}
                           />
-                       
-                   
                         </div>
                       </Draggable>
                     );
@@ -295,12 +391,41 @@ const ScrapBook = ({ user, setUser }) => {
                   })}
                 </div>
               ) : null}
+              {/* /////////////////////////////////////////////////////////////////////////////// */}
+              <Star1
+                star={star}
+                setStar={setStar}
+                starArr={starArr}
+                setStarArr={setStarArr}
+              />
+              <Circle
+                circle={circle}
+                setCircle={setCircle}
+                circleArr={circleArr}
+                setCircleArr={setCircleArr}
+              />
+              <Moon
+                moon={moon}
+                setMoon={setMoon}
+                moonArr={moonArr}
+                setMoonArr={setMoonArr}
+              />
               {/* Quote ///////////////////////////////////////////// */}
               {showQuote ? (
                 <Draggable>
-                  <div>
-                    <h2>{advice.advice}</h2>
-                    <button onClick={handleFetch}>Randomize Quote</button>
+                  <div className="quoteContainer draggable12">
+                    <h2 className="quote" placeholder="Pick a Quote">
+                      {advice.advice}
+                    </h2>
+                    {!showQuoteButton ? (
+                      <button className="quoteBtnDefault" onClick={handleFetch}>
+                        Randomize
+                      </button>
+                    ) : (
+                      <button className="quoteBtn" onClick={handleFetch}>
+                        Randomize
+                      </button>
+                    )}
                   </div>
                 </Draggable>
               ) : null}
@@ -309,7 +434,15 @@ const ScrapBook = ({ user, setUser }) => {
                 {!showMeme ? null : (
                   <Draggable>
                     <div>
-                      <button onClick={fetchMeme}>Meme</button>
+                      {!showMemeBtn ? (
+                        <button onClick={fetchMeme} className="quoteBtnDefault">
+                          Randomize
+                        </button>
+                      ) : (
+                        <button className="quoteBtn" onClick={fetchMeme}>
+                          Randomize
+                        </button>
+                      )}
 
                       <img
                         src={meme}
@@ -320,7 +453,7 @@ const ScrapBook = ({ user, setUser }) => {
                   </Draggable>
                 )}
               </div>{" "}
-              {/* ImageLoaderrrrr//////////////////////////////////////////////////// */}
+              {/* ! ImageLoaderrrrr//////////////////////////////////////////////////// */}
               <div>
                 {showImage ? (
                   <ImageHandle
