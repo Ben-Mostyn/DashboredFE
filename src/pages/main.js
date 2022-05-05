@@ -6,6 +6,7 @@ import Star from "./Shapes/Star.png";
 import circle from "../pages/Shapes/circle.png";
 import moon from "../pages/Shapes/CrescentMoon.png";
 import { Star1, Circle, Moon } from "../components/Shapes";
+import { motion } from "framer-motion";
 
 // ! COMPONENTS
 import Clock from "../components/clock";
@@ -206,6 +207,8 @@ const ScrapBook = ({ user, setUser }) => {
   return (
     <div>
       <div className="main">
+        {/* PLAY AREA */}
+
         <div className="playArea">
           {!visible ? null : (
             <div className="fontModal">
@@ -383,6 +386,7 @@ const ScrapBook = ({ user, setUser }) => {
                 </div>
               </div>
             ) : null}
+            {/* !MAIN PLAY AREA */}
 
             <div className="mainPlayArea">
               {/* Text Box return ///////////////////////////////////////////////////////// */}
