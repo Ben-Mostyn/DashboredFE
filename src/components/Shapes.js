@@ -3,6 +3,7 @@ import Circle1 from "../pages/Shapes/circle.png";
 import Moon1 from "../pages/Shapes/CrescentMoon.png";
 import Draggable from "react-draggable";
 import "../pages/main.css";
+import { AiOutlineClose } from "react-icons/ai";
 
 export function Star1({ star, setStar, starArr, setStarArr }) {
   const removeHandler = (index, i) => {
@@ -16,15 +17,17 @@ export function Star1({ star, setStar, starArr, setStarArr }) {
         return (
           <Draggable>
             <div>
-              <button onClick={removeHandler}>Delete</button>
+              <button className="ShapeBtn" onClick={removeHandler}>
+                <AiOutlineClose size={20} />
+              </button>
               <img
                 src={Star}
                 onChange={(e) => {
                   setStar(e.target.value);
                 }}
                 style={{
-                  height: 200,
-                  width: 200,
+                  height: 100,
+                  width: 100,
                   position: "absolute",
                   zIndex: 1,
                 }}
@@ -50,15 +53,18 @@ export function Circle({ circle, setCircle, circleArr, setCircleArr }) {
         return (
           <Draggable>
             <div className="shapeContainer">
-              <button onClick={removeHandler}>Delete</button>
+              <button className="ShapeBtn" onClick={removeHandler}>
+                <AiOutlineClose size={20} />
+              </button>
+
               <img
                 src={Circle1}
                 onChange={(e) => {
                   setCircle(e.target.value);
                 }}
                 style={{
-                  height: 200,
-                  width: 200,
+                  height: 150,
+                  width: 150,
                   position: "absolute",
                   zIndex: 2,
                 }}
@@ -84,7 +90,9 @@ export function Moon({ moon, setMoon, moonArr, setMoonArr }) {
         return (
           <Draggable>
             <div>
-              <button onClick={removeHandler}>Delete</button>
+              <button className="ShapeBtn" onClick={removeHandler}>
+                <AiOutlineClose size={20} />
+              </button>
               <img
                 src={Moon1}
                 onChange={(e) => {
