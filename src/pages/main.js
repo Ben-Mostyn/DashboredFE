@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
+import {AiFillEdit} from "react-icons/ai"
 import Star from "./Shapes/Star.png";
 import circle from "../pages/Shapes/circle.png";
 import moon from "../pages/Shapes/CrescentMoon.png";
@@ -23,6 +24,8 @@ import { RiTodoLine } from "react-icons/ri";
 import { RiEmotionLaughLine } from "react-icons/ri";
 import { BsChatRightQuote } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import {BiMove} from "react-icons/bi"
+import "./todolist.css"
 import { AiFillStar } from "react-icons/ai";
 import { FaRegCircle } from "react-icons/fa";
 import { BsFillMoonFill } from "react-icons/bs";
@@ -396,17 +399,18 @@ const ScrapBook = ({ user, setUser }) => {
                     return (
                       <Draggable handle=".handle">
                         <div className="textborder">
-                          <button onClick={removeHandler} id="x">
+                          <button onClick={removeHandler} className="closeicon"  id="x">
                             <AiOutlineCloseCircle />
                           </button>
-                          <div className="handle">Drag Me!</div>
-                          <button
+                          <div className="handle"><BiMove/></div>
+                          <button style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}
                             onClick={() => {
                               visible ? setVisible(false) : setVisible(true);
                             }}
+                            className="editicon"
                           >
                             {" "}
-                            Edit
+                            <AiFillEdit/>
                           </button>
                           <textarea
                             className="draggable textbox"
@@ -513,10 +517,12 @@ const ScrapBook = ({ user, setUser }) => {
               {uploadedImages.map((imageUrl, index) => (
                 <img alt="uploaded" key={index} src={imageUrl} />
               ))}
+
+              {/* to do list */}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
-                    <h1>ToDo List!</h1>
+                    <h1 className="todoh1g">To do list</h1>
                     <input
                       className="todo-input"
                       value={currentTodo}
@@ -529,7 +535,7 @@ const ScrapBook = ({ user, setUser }) => {
                           setCurrentTodo(" ");
                         }
                       }}
-                      placeholder="What do you need ToDo?"
+                      placeholder="Things i need to do....."
                     />
 
                     {todos.map((todo, index) => (
@@ -540,7 +546,7 @@ const ScrapBook = ({ user, setUser }) => {
                         >
                           {todo.isCompleted && <span>&#x2714;</span>}
                         </div>
-                        <div className={todo.isCompleted ? "done" : " "}>
+                        <div className={todo.isCompleted ? "done" : " "} id="todo">
                           {" "}
                           {todo.todo}
                         </div>

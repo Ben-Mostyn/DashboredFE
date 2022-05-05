@@ -497,12 +497,12 @@ input {
 
 .dropdown:active {
   position: absolute;
-  top: 150px;
-  left: 10px;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  top:180px;
+  left: 5px;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 1px );
+  -webkit-backdrop-filter: blur( 1px );
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   outline: none;
@@ -514,18 +514,55 @@ input {
 }
 
 .textborder {
-  border: 1px red solid;
+  /* border: 1px red solid; */
   position: absolute;
 }
 
 .handle {
-  border: 1px red solid;
+  /* border: 1px red solid; */
 }
 
 .quote {
   font-size: 2.5rem;
   font-family: "Indie Flower";
 }
+
+.handle{
+  /* border: 1px red solid; */
+  cursor: grab;
+opacity: 0;
+}
+
+.textborder:hover > .handle {
+  opacity: 1;
+ 
+  transition: ease-in-out 2s smooth;
+}
+.editicon{
+  /* border: 1px red solid; */
+  cursor: pointer;
+opacity: 0;
+}
+
+
+.textborder:hover > .editicon{
+  opacity: 1;
+  cursor: pointer;
+  transition: ease-in-out 2s smooth;
+}
+
+.closeicon{
+  margin-left:50%;
+  border: none;
+  opacity: 0;
+}
+
+.textborder:hover > .closeicon{
+  opacity: 1;
+  cursor: pointer;
+  transition: ease-in-out 2s smooth;
+}
+
 
 .quoteBtn {
   color: rgba(6, 6, 6, 0);
