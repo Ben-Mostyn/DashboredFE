@@ -25,6 +25,8 @@ import { BiLogOut } from "react-icons/bi";
 import { AiFillStar } from "react-icons/ai";
 import { FaRegCircle } from "react-icons/fa";
 import { BsFillMoonFill } from "react-icons/bs";
+import { BsImages } from "react-icons/bs";
+import { IoShapesOutline } from "react-icons/io5";
 
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
@@ -301,7 +303,7 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <FiPenTool size={30} />{" "}
+                <BsImages size={30} />{" "}
               </button>
               <button
                 className="btn1"
@@ -313,7 +315,7 @@ const ScrapBook = ({ user, setUser }) => {
                 <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
-                <HiMusicNote
+                <IoShapesOutline
                   onClick={() => {
                     !shapeModal ? setShapeModal(true) : setShapeModal(false);
                   }}
@@ -340,7 +342,7 @@ const ScrapBook = ({ user, setUser }) => {
                 <div className="shapeModal1">
                   <button className="ShapeModalBtn" onClick={createStar}>
                     <AiFillStar
-                      size={30}
+                      size={25}
                       style={{
                         borderStyle: "solid",
                         borderWidth: 2,
@@ -350,9 +352,11 @@ const ScrapBook = ({ user, setUser }) => {
                       }}
                     />
                   </button>
+                </div>
+                <div className="shapeModal1">
                   <button className="ShapeModalBtn" onClick={createCircle}>
                     <FaRegCircle
-                      size={30}
+                      size={25}
                       style={{
                         borderStyle: "solid",
                         borderWidth: 2,
@@ -362,9 +366,11 @@ const ScrapBook = ({ user, setUser }) => {
                       }}
                     />
                   </button>
+                </div>
+                <div className="shapeModal1">
                   <button className="ShapeModalBtn" onClick={createMoon}>
                     <BsFillMoonFill
-                      size={30}
+                      size={25}
                       style={{
                         borderStyle: "solid",
                         borderWidth: 2,
