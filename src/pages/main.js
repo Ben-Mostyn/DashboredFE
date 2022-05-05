@@ -7,6 +7,7 @@ import Star from "./Shapes/Star.png";
 import circle from "../pages/Shapes/circle.png";
 import moon from "../pages/Shapes/CrescentMoon.png";
 import { Star1, Circle, Moon } from "../components/Shapes";
+import { motion } from "framer-motion";
 
 // ! COMPONENTS
 import Clock from "../components/clock";
@@ -25,6 +26,12 @@ import { BsChatRightQuote } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
 import {BiMove} from "react-icons/bi"
 import "./todolist.css"
+import { AiFillStar } from "react-icons/ai";
+import { FaRegCircle } from "react-icons/fa";
+import { BsFillMoonFill } from "react-icons/bs";
+import { BsImages } from "react-icons/bs";
+import { IoShapesOutline } from "react-icons/io5";
+
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
 
@@ -203,6 +210,8 @@ const ScrapBook = ({ user, setUser }) => {
   return (
     <div>
       <div className="main">
+        {/* PLAY AREA */}
+
         <div className="playArea">
           {!visible ? null : (
             <div className="fontModal">
@@ -300,7 +309,7 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <FiPenTool size={30} />{" "}
+                <BsImages size={30} />{" "}
               </button>
               <button
                 className="btn1"
@@ -312,7 +321,7 @@ const ScrapBook = ({ user, setUser }) => {
                 <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
-                <HiMusicNote
+                <IoShapesOutline
                   onClick={() => {
                     !shapeModal ? setShapeModal(true) : setShapeModal(false);
                   }}
@@ -335,12 +344,52 @@ const ScrapBook = ({ user, setUser }) => {
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
             {shapeModal ? (
-              <div className="shapeModal1">
-                <button onClick={createStar}>Star</button>
-                <button onClick={createCircle}>Circle</button>
-                <button onClick={createMoon}>Moon</button>
+              <div className="containShapeModal">
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createStar}>
+                    <AiFillStar
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createCircle}>
+                    <FaRegCircle
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createMoon}>
+                    <BsFillMoonFill
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
               </div>
             ) : null}
+            {/* !MAIN PLAY AREA */}
 
             <div className="mainPlayArea">
               {/* Text Box return ///////////////////////////////////////////////////////// */}

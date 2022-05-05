@@ -2,6 +2,8 @@ import Draggable from "react-draggable";
 import Alert from "./Alerts";
 import React, { useEffect, useState } from "react";
 import { Image } from "cloudinary-react";
+import { motion } from "framer-motion";
+import { scale } from "@cloudinary/url-gen/actions/resize";
 
 export default function ImageHandle() {
   const [imageArray, setImageArray] = useState([]);
@@ -66,8 +68,9 @@ export default function ImageHandle() {
         <div className="imageModal">
           <div className="imagePreview">
             <div className="previewBox">
-              <h2>Image Preview</h2>
-
+              <motion.div animate={{ y: 10 }} transition={{ type: "spring" }}>
+                <h2>Image Preview</h2>
+              </motion.div>
               <img
                 className="preview"
                 src={[...imageArray].pop()}

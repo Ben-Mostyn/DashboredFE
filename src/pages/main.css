@@ -603,17 +603,69 @@ opacity: 0;
 }
 
 .shapeModal1 {
-  height: 300px;
-  width: 150px;
-  background-color: white;
-  position: absolute;
-  bottom: 1%;
-  left: 6%;
-  border-radius: 8%;
-  border: black 1px solid;
+  height: 60%;
+  width: 25%;
+  position: relative;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2%;
+}
+
+.shapeModal1:hover {
+  animation: shuffle 3s infinite linear;
 }
 
 .shapeContainer {
   width: 5%;
   position: absolute;
+}
+
+.ShapeBtn {
+  color: rgba(6, 6, 6, 0);
+  border: rgba(6, 6, 6, 0) 1px solid;
+  margin: 0;
+  padding: 2%;
+  font-size: 2rem;
+}
+
+.ShapeBtn:hover {
+  color: rgba(6, 6, 6, 1);
+  border: rgba(6, 6, 6, 1) 1px solid;
+  /* transition: 0.2s ease-in-out; */
+}
+
+.ShapeModalBtn {
+  margin: 2px;
+  border: none;
+}
+
+.ShapeModalBtn:hover {
+  border: #2f3b38 solid 2px;
+}
+
+.containShapeModal {
+  height: 100px;
+  width: 12%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: absolute;
+  bottom: 15%;
+  left: 83%;
+  border-radius: 5%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
