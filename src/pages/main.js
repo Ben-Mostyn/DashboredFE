@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
-
+import {AiFillEdit} from "react-icons/ai"
 // ! COMPONENTS
 import Clock from "../components/clock";
 // import MemeGenerator from "../components/utilsComponents/memeApi";
@@ -253,17 +253,17 @@ const ScrapBook = ({ user, setUser }) => {
                     return (
                       <Draggable handle=".handle">
                         <div className="textborder">
-                          <button onClick={removeHandler} id="x">
+                          <button onClick={removeHandler}  style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}id="x">
                             <AiOutlineCloseCircle />
                           </button>
-                          <div className="handle">Drag Me!</div>
-                          <button
+                          <div className="handle">Grab me</div>
+                          <button style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}
                             onClick={() => {
                               visible ? setVisible(false) : setVisible(true);
                             }}
                           >
                             {" "}
-                            Edit
+                            <AiFillEdit/>
                           </button>
                           <textarea
                             className="draggable textbox"
