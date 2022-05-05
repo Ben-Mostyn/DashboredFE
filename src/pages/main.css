@@ -561,7 +561,6 @@
 }
 
 .shapeContainer {
-  border: red solid 2px;
   width: 5%;
-  position: relative;
+  position: absolute;
 }

@@ -49,7 +49,7 @@ export function Circle({ circle, setCircle, circleArr, setCircleArr }) {
       {circleArr.map((i) => {
         return (
           <Draggable>
-            <div>
+            <div className="shapeContainer">
               <button onClick={removeHandler}>Delete</button>
               <img
                 src={Circle1}
@@ -79,7 +79,7 @@ export function Moon({ moon, setMoon, moonArr, setMoonArr }) {
     storedArr.splice(index, 1);
   };
   return (
-    <div>
+    <div className="shapeContainer">
       {moonArr.map((i) => {
         return (
           <Draggable>
