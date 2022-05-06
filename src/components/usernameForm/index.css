@@ -1,5 +1,81 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
+
+    box-sizing: border-box;
+    font-family: 'Convergence', sans-serif;
+    font-size: 10px;
+    /* background-image: url(/src/imgs/hip-square.webp); */
+
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    perspective: 1000px;
+    /* background-image: url(/src/imgs/hip-square.webp); */
+    background-size: 60rem;
+    background-repeat: repeat 0 0;
+   
+
+  }
+
+  @keyframes infiniteMove {
+    0%{
+      background-position: 50rem 50rem;
+    }
+    100%{
+      background-position: 60rem 60rem;
+    }
+    
+  }
+
+  .modal {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    transition: 1s;
+    transform-style: preserve-3d;
+  }
+  
+
+   .modal:hover{
+      transform: rotateY(180deg);
+     
+  } 
+
+  /* .front-cover{
+
+    transform-origin: center,left;
+    z-index: 1;
+  } */
+
+ 
+  
+  .modal.flip {
+    transform: rotateY(180deg);
+  }
+  
+  .rotateLeft {
+    transform: rotateY(45deg);
+  }
+  
+  .rotateRight {
+    transform: rotateY(-45deg);
+  }
+  
+  .first-half,
+  .second-half {
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+    background-image: url("/src/imgs/front-cover.jpg");
+   
+    background-size: 100% 100%;
+    z-index: 1;
+
   box-sizing: border-box;
   font-size: 10px;
   padding: 0;
@@ -25,6 +101,7 @@ body {
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
+
   }
   50% {
     background-position: 100% 50%;
