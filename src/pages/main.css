@@ -401,7 +401,7 @@ input {
   color: red;
   -webkit-appearance: none;
   outline: none;
-} */
+ */
 .imageInputContainer {
   /* border: 2px solid blue; */
   height: 20%;
@@ -470,13 +470,7 @@ input {
   margin: 2px;
   cursor: pointer;
 }
-.fontbig {
-  /* font-size: 50px; */
-  /* position: absolute; */
-  /* top:90%;
-  border: none;
-  left: 30px; */
-}
+
 
 .dropdown {
   position: absolute;
@@ -519,9 +513,6 @@ input {
   position: absolute;
 }
 
-.handle {
-  /* border: 1px red solid; */
-}
 
 .quote {
   font-size: 2.5rem;
