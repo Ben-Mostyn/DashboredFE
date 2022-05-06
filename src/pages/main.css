@@ -118,6 +118,7 @@
   margin-bottom: 5px;
 }
 
+
 @keyframes shuffle {
   0% {
     transform: scale(1.05);
@@ -404,7 +405,7 @@ input {
 .imageInputContainer {
   /* border: 2px solid blue; */
   height: 20%;
-  width: 45%;
+  width: 40%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -577,18 +578,50 @@ opacity: 0;
   transition: 0.2s ease-in-out;
 }
 
+
+
+
 .quoteContainer {
   width: 30%;
   height: 25%;
 }
 
-.userHead {
+.userheadmain{
+  height: 50px;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   position: absolute;
   bottom: 2%;
-  left: 40%;
-  font-size: 3rem;
-  -webkit-text-stroke: 0.1px black;
-  color: rgba(31, 38, 135, 0.37);
+   left: 40%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+
+}
+
+.userHead {
+  /* position: absolute; */
+  /* bottom: 2%; */
+  /* left: 40%; */
+  font-size: 20px;
+ color: white;
+position: absolute;
+left: 10%;
+}
+
+.circlehead{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  right:10%;
+  position: absolute;
 }
 
 .draggable12 {
@@ -603,14 +636,14 @@ opacity: 0;
 }
 
 .shapeModal1 {
-  height: 60%;
+  height: 50%;
   width: 25%;
   position: relative;
   z-index: 4;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
@@ -629,27 +662,28 @@ opacity: 0;
 }
 
 .ShapeBtn {
-  color: rgba(6, 6, 6, 0);
-  border: rgba(6, 6, 6, 0) 1px solid;
+
   margin: 0;
   padding: 2%;
   font-size: 2rem;
+  opacity: 0;
+  border: none;
 }
 
-.ShapeBtn:hover {
-  color: rgba(6, 6, 6, 1);
-  border: rgba(6, 6, 6, 1) 1px solid;
-  /* transition: 0.2s ease-in-out; */
+.ShapeBtn:hover{
+  opacity: 1;
 }
+
+
+
+
 
 .ShapeModalBtn {
   margin: 2px;
   border: none;
 }
 
-.ShapeModalBtn:hover {
-  border: #2f3b38 solid 2px;
-}
+
 
 .containShapeModal {
   height: 100px;
@@ -661,7 +695,7 @@ opacity: 0;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   position: absolute;
-  bottom: 15%;
+  bottom: 10%;
   left: 83%;
   border-radius: 5%;
   z-index: 3;
@@ -673,3 +707,8 @@ opacity: 0;
 .memeimg{
   position: absolute;
 }
+
+
+ .quoteContainer{
+  position: absolute;
+} 

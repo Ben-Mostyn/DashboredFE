@@ -65,21 +65,10 @@ export default function ImageHandle() {
   return (
     <div className="">
       <Draggable>
-        <motion.div
-          className="imageModal"
-          animate={{
-            scale: [1, 0.7, 1],
-            rotate: [0, 15, 0],
-          }}
-        >
+        <div className="imageModal">
           <div className="imagePreview">
             <div className="previewBox">
-              <motion.div
-                animate={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <h2>Image Preview</h2>
-              </motion.div>
+              <h2>Image Preview</h2>
 
               <img
                 className="preview"
@@ -99,19 +88,21 @@ export default function ImageHandle() {
               />
             </div>
           </div>
-        </motion.div>
+        </div>
       </Draggable>
       <div>
         {updateImage ? (
           <div>
             {imageArray.map((imageUrl, index) => {
               return (
-                <img
-                  alt="uploaded images"
-                  src={imageUrl}
-                  style={{ width: 200, height: 200 }}
-                  key={index}
-                />
+                <Draggable>
+                  <img
+                    alt="uploaded images"
+                    src={imageUrl}
+                    style={{ width: 200, height: 200 }}
+                    key={index}
+                  />
+                </Draggable>
               );
             })}
           </div>
