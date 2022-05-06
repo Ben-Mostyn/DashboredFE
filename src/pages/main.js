@@ -2,10 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import { CirclePicker } from "react-color";
+import {AiFillEdit} from "react-icons/ai"
 import Star from "./Shapes/Star.png";
 import circle from "../pages/Shapes/circle.png";
 import moon from "../pages/Shapes/CrescentMoon.png";
 import { Star1, Circle, Moon } from "../components/Shapes";
+import { motion } from "framer-motion";
 
 // ! COMPONENTS
 import Clock from "../components/clock";
@@ -22,6 +24,13 @@ import { RiTodoLine } from "react-icons/ri";
 import { RiEmotionLaughLine } from "react-icons/ri";
 import { BsChatRightQuote } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
+import {BiMove} from "react-icons/bi"
+import "./todolist.css"
+import { AiFillStar } from "react-icons/ai";
+import { FaRegCircle } from "react-icons/fa";
+import { BsFillMoonFill } from "react-icons/bs";
+import { BsImages } from "react-icons/bs";
+import { IoShapesOutline } from "react-icons/io5";
 
 import "../components/textbox.css";
 import { color } from "@cloudinary/url-gen/qualifiers/background";
@@ -201,6 +210,8 @@ const ScrapBook = ({ user, setUser }) => {
   return (
     <div>
       <div className="main">
+        {/* PLAY AREA */}
+
         <div className="playArea">
           {!visible ? null : (
             <div className="fontModal">
@@ -298,7 +309,7 @@ const ScrapBook = ({ user, setUser }) => {
                 }}
               >
                 {" "}
-                <FiPenTool size={30} />{" "}
+                <BsImages size={30} />{" "}
               </button>
               <button
                 className="btn1"
@@ -310,7 +321,7 @@ const ScrapBook = ({ user, setUser }) => {
                 <BsChatRightQuote size={30} />
               </button>
               <div className="btn1">
-                <HiMusicNote
+                <IoShapesOutline
                   onClick={() => {
                     !shapeModal ? setShapeModal(true) : setShapeModal(false);
                   }}
@@ -333,12 +344,52 @@ const ScrapBook = ({ user, setUser }) => {
           <div>
             {/* <button className="textButton" onClick={createText}><BiText size={30} /></button> */}
             {shapeModal ? (
-              <div className="shapeModal1">
-                <button onClick={createStar}>Star</button>
-                <button onClick={createCircle}>Circle</button>
-                <button onClick={createMoon}>Moon</button>
+              <div className="containShapeModal">
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createStar}>
+                    <AiFillStar
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createCircle}>
+                    <FaRegCircle
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
+                <div className="shapeModal1">
+                  <button className="ShapeModalBtn" onClick={createMoon}>
+                    <BsFillMoonFill
+                      size={25}
+                      style={{
+                        borderStyle: "solid",
+                        borderWidth: 2,
+                        borderColor: "black",
+                        padding: 2,
+                        margin: 5,
+                      }}
+                    />
+                  </button>
+                </div>
               </div>
             ) : null}
+            {/* !MAIN PLAY AREA */}
 
             <div className="mainPlayArea">
               {/* Text Box return ///////////////////////////////////////////////////////// */}
@@ -348,17 +399,18 @@ const ScrapBook = ({ user, setUser }) => {
                     return (
                       <Draggable handle=".handle">
                         <div className="textborder">
-                          <button onClick={removeHandler} id="x">
+                          <button onClick={removeHandler} className="closeicon"  id="x">
                             <AiOutlineCloseCircle />
                           </button>
-                          <div className="handle">Drag Me!</div>
-                          <button
+                          <div className="handle"><BiMove/></div>
+                          <button style={{border: '0px solid rgba(0, 0, 0, 0.05)'}}
                             onClick={() => {
                               visible ? setVisible(false) : setVisible(true);
                             }}
+                            className="editicon"
                           >
                             {" "}
-                            Edit
+                            <AiFillEdit/>
                           </button>
                           <textarea
                             className="draggable textbox"
@@ -442,6 +494,7 @@ const ScrapBook = ({ user, setUser }) => {
                       )}
 
                       <img
+                      className="memeimg"
                         src={meme}
                         style={{ height: 200, width: 200 }}
                         alt="meme"
@@ -465,10 +518,12 @@ const ScrapBook = ({ user, setUser }) => {
               {uploadedImages.map((imageUrl, index) => (
                 <img alt="uploaded" key={index} src={imageUrl} />
               ))}
+
+              {/* to do list */}
               {!toDo ? null : (
                 <Draggable>
                   <div className="todolist">
-                    <h1>ToDo List!</h1>
+                    <h1 className="todoh1g">To Do List</h1>
                     <input
                       className="todo-input"
                       value={currentTodo}
@@ -481,7 +536,7 @@ const ScrapBook = ({ user, setUser }) => {
                           setCurrentTodo(" ");
                         }
                       }}
-                      placeholder="What do you need ToDo?"
+                      placeholder="Things i need to do....."
                     />
 
                     {todos.map((todo, index) => (
@@ -492,7 +547,7 @@ const ScrapBook = ({ user, setUser }) => {
                         >
                           {todo.isCompleted && <span>&#x2714;</span>}
                         </div>
-                        <div className={todo.isCompleted ? "done" : " "}>
+                        <div className={todo.isCompleted ? "done" : " "} id="todo">
                           {" "}
                           {todo.todo}
                         </div>

@@ -2,6 +2,8 @@ import Draggable from "react-draggable";
 import Alert from "./Alerts";
 import React, { useEffect, useState } from "react";
 import { Image } from "cloudinary-react";
+import { motion, MotionConfig } from "framer-motion";
+import { scale } from "@cloudinary/url-gen/actions/resize";
 
 export default function ImageHandle() {
   const [imageArray, setImageArray] = useState([]);
@@ -63,10 +65,21 @@ export default function ImageHandle() {
   return (
     <div className="">
       <Draggable>
-        <div className="imageModal">
+        <motion.div
+          className="imageModal"
+          animate={{
+            scale: [1, 0.7, 1],
+            rotate: [0, 15, 0],
+          }}
+        >
           <div className="imagePreview">
             <div className="previewBox">
-              <h2>Image Preview</h2>
+              <motion.div
+                animate={{ scale: 1.1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2>Image Preview</h2>
+              </motion.div>
 
               <img
                 className="preview"
@@ -86,7 +99,7 @@ export default function ImageHandle() {
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </Draggable>
       <div>
         {updateImage ? (
