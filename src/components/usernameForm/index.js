@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addUser, login } from "../../utils";
 
+
 export const UsernameForm = (props) => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
@@ -28,24 +29,12 @@ export const UsernameForm = (props) => {
   };
 
   return (
-    //Modal
-
     <div className="modal">
-      <div className="front-cover">
-        <div className="first-half"></div>
-        <div className="second-half"></div>
-      </div>
-      <div className="middleleft"></div>
-      <div className="middleright"></div>
-
       <div className="back-cover">
+
+      <div className="logo">logo</div>
+
         <form onSubmit={submitHandler} className="form">
-          {props.user && (
-            <h1>{`${props.user} Logging in
-          `}</h1>
-          )}
-          <div className="Avatar"></div>
-          <button onClick={(e) => btnContent()}>{btn} </button>
           <input
             id="Username"
             className="inputs"
@@ -66,7 +55,15 @@ export const UsernameForm = (props) => {
             placeholder="Password"
             type="password"
           />
-          <button type="submit">Submit</button>
+
+          <div className="buttons">
+            <button onClick={(e) => btnContent()}>{btn} </button>
+            <button type="submit">Submit</button>
+          </div>
+
+          <div className="message">
+            {props.user && <h1>Hi {props.user}, just logging you in..</h1>}
+          </div>
         </form>
       </div>
     </div>
