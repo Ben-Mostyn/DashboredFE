@@ -34,11 +34,6 @@ body {
   }
 }
 
-.logo {
-  background-image: url("src/components/usernameForm/logo.png");
-  width: 20px;
-  height: 20px;
-}
 
 .form {
   object-fit: contain;

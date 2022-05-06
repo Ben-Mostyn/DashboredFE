@@ -32,8 +32,6 @@ export const UsernameForm = (props) => {
     <div className="modal">
       <div className="back-cover">
 
-      <div className="logo">logo</div>
-
         <form onSubmit={submitHandler} className="form">
           <input
             id="Username"
