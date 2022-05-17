@@ -1,85 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Convergence&display=swap");
 * {
-
-    box-sizing: border-box;
-    font-family: 'Convergence', sans-serif;
-    font-size: 10px;
-    /* background-image: url(/src/imgs/hip-square.webp); */
-
-  }
-  
-  body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    perspective: 1000px;
-    /* background-image: url(/src/imgs/hip-square.webp); */
-    background-size: 60rem;
-    background-repeat: repeat 0 0;
-   
-
-  }
-
-  @keyframes infiniteMove {
-    0%{
-      background-position: 50rem 50rem;
-    }
-    100%{
-      background-position: 60rem 60rem;
-    }
-    
-  }
-
-  .modal {
-    position: relative;
-    width: 400px;
-    height: 600px;
-    transition: 1s;
-    transform-style: preserve-3d;
-  }
-  
-
-   .modal:hover{
-      transform: rotateY(180deg);
-     
-  } 
-
-  /* .front-cover{
-
-    transform-origin: center,left;
-    z-index: 1;
-  } */
-
- 
-  
-  .modal.flip {
-    transform: rotateY(180deg);
-  }
-  
-  .rotateLeft {
-    transform: rotateY(45deg);
-  }
-  
-  .rotateRight {
-    transform: rotateY(-45deg);
-  }
-  
-  .first-half,
-  .second-half {
-    position: absolute;
-    width: 100%;
-    height: 100%; 
-    background-image: url("/src/imgs/front-cover.jpg");
-   
-    background-size: 100% 100%;
-    z-index: 1;
-
   box-sizing: border-box;
+  font-family: "Convergence", sans-serif;
   font-size: 10px;
-  padding: 0;
-  margin: 0;
+  /* background-image: url(/src/imgs/hip-square.webp); */
 }
 
 body {
@@ -89,101 +13,163 @@ body {
   align-items: center;
   min-height: 100vh;
   perspective: 1000px;
-  background: linear-gradient(-45deg, #e9ad9a, #ecafc6, #b4e1f1, #adf0e0);
-  background-size: 400% 400%;
-  animation: gradient 35s ease infinite;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  /* background-image: url(/src/imgs/hip-square.webp); */
+  background-size: 60rem;
+  background-repeat: repeat 0 0;
+  animation: infiniteMove linear infinite 3000ms;
 }
 
-@keyframes gradient {
+@keyframes infiniteMove {
   0% {
-    background-position: 0% 50%;
-
-  }
-  50% {
-    background-position: 100% 50%;
+    background-position: 50rem 50rem;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 60rem 60rem;
   }
-}
-
-
-.form {
-  object-fit: contain;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 70%;
-  width: 90%;
-  margin-top: 25%;
-  margin-left: 5%;
-}
-
-.back-cover {
-  height: 100%;
-  width: 100%;
-}
-
-.inputs {
-  background: rgba(255, 255, 255, 0);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.114);
-  text-align: center;
-  margin-bottom: 30px;
-  width: 80%;
-  height: 9%;
-  font-family: "Roboto", sans-serif;
-  font-size: 120%;
-  object-fit: contain;
 }
 
 .modal {
-  width: 50vh;
-  height: 60vh;
-  background: rgba(148, 148, 148, 0.051);
+  position: relative;
+  width: 400px;
+  height: 600px;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.modal:hover {
+  transform: rotateY(180deg);
+}
+
+/* .front-cover{
+    transform-origin: center,left;
+    z-index: 1;
+  } */
+
+.modal.flip {
+  transform: rotateY(180deg);
+}
+
+.rotateLeft {
+  transform: rotateY(45deg);
+}
+
+.rotateRight {
+  transform: rotateY(-45deg);
+}
+
+.first-half,
+.second-half {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/imgs/front-cover.jpg");
+
+  background-size: 100% 100%;
+  z-index: 1;
+}
+
+/* .second-half {
+  left: 50%;
+  background-image: url("/src/imgs/front-cover-half-2.jpg");
+} */
+
+.middleleft,
+.middleright {
+  content: "";
+  position: absolute;
+  background-image: url("/src/imgs/middle-cover.jpg");
+  width: 65px;
+  height: 100%;
+  background-size: 100% 100%;
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
+
+.middleright {
+  right: 0;
+  background-image: url("/src/imgs/middle-cover-2.jpeg");
+  transform-origin: right;
+  transform: rotateY(-90deg);
+}
+
+.back-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/imgs/back-cover.jpg");
+  background-size: 100% 100%;
+  transform: rotateY(180deg) translateZ(65px);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modaltemplate {
+  position: absolute;
+  height: 1000px;
+  /* z-index: 10; */
+  border: 10px red solid;
+  /* transform: rotateY(180deg) translateZ(65px); */
+}
+
+.inputs {
+  margin: 20px;
+  background: none;
+  border: solid rgb(250, 249, 248) 2px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  font-family: "Convergence";
+}
+
+.inputs:focus {
+  outline: none;
+}
+
+/* .inputs:focus ~ .Usernamelabel
+  {
+    bottom: 152px;
+    transition:  200ms ease-in-out;
+    font-size: 8px;
+  } */
+
+.Avatar {
+  z-index: 100;
+  border: 1px rgb(255, 255, 255) solid;
+  height: 100px;
+  width: 100px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background-image: url("/src/imgs/avatar.png");
+  background-size: 100% 100%;
+
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.138);
-  overflow: hidden;
-  object-fit: contain;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.form {
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.form button {
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 15px;
-  height: 50px;
-  width: 100px;
-  background: rgba(148, 148, 148, 0.051);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  margin: 10px;
-  position: relative;
-  font-family: "Roboto", sans-serif;
-  font-size: 120%;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+}
+button {
+  margin-top: 20px;
+  background: none;
+  border: 1px white solid;
+  -webkit-appearance: none;
+  border-radius: 5px;
 }
 
-.buttons {
-  flex-direction: row;
-  margin-top: 65%;
-  position: absolute;
-}
-
-.message {
-  font-family: "Roboto", sans-serif;
-  font-size: 120%;
-  justify-items: center;
-  align-items: flex-end;
-  position: absolute;
-  margin-top: 90%;
+button:focus {
+  outline: none;
 }
